@@ -4,11 +4,12 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, Scale } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 
-interface JudgementPageProps {
-  params: {
+type JudgementPageProps = {
+  params: Promise<{
     id: string;
-  };
-}
+  }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
 
 async function getJudgement(id: string) {
   if (!isSanityConfigured()) {
@@ -39,8 +40,8 @@ async function getJudgement(id: string) {
 
 const portableTextComponents = {
   types: {
-    block: ({ value }: any) => {
-      const { style, children } = value;
+    block: ({ value, children }: any) => {
+      const { style } = value;
       if (style === "normal") {
         return <p className="mb-4 text-[#3C2A21] leading-relaxed">{children}</p>;
       }
@@ -55,8 +56,11 @@ const portableTextComponents = {
   },
 };
 
-export default async function JudgementDetailPage({ params }: JudgementPageProps) {
-  const judgement = await getJudgement(params.id);
+export default async function JudgementDetailPage({ params, searchParams }: JudgementPageProps) {
+  const { id } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  void resolvedSearchParams;
+  const judgement = await getJudgement(id);
 
   if (!judgement) {
     notFound();

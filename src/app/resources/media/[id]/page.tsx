@@ -5,11 +5,12 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, Calendar } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 
-interface MediaPageProps {
-  params: {
+type MediaPageProps = {
+  params: Promise<{
     id: string;
-  };
-}
+  }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
 
 async function getMediaItem(id: string) {
   if (!isSanityConfigured()) {
@@ -37,8 +38,11 @@ async function getMediaItem(id: string) {
   }
 }
 
-export default async function MediaDetailPage({ params }: MediaPageProps) {
-  const media = await getMediaItem(params.id);
+export default async function MediaDetailPage({ params, searchParams }: MediaPageProps) {
+  const { id } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  void resolvedSearchParams;
+  const media = await getMediaItem(id);
 
   if (!media) {
     notFound();

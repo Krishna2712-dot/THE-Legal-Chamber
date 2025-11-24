@@ -5,11 +5,12 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 
-interface BlogPageProps {
-  params: {
+type BlogPageProps = {
+  params: Promise<{
     slug: string;
-  };
-}
+  }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
 
 async function getBlogPost(slug: string) {
   if (!isSanityConfigured()) {
@@ -40,8 +41,8 @@ async function getBlogPost(slug: string) {
 
 const portableTextComponents = {
   types: {
-    block: ({ value }: any) => {
-      const { style, children } = value;
+    block: ({ value, children }: any) => {
+      const { style } = value;
       if (style === "normal") {
         return <p className="mb-4 text-[#3C2A21] leading-relaxed">{children}</p>;
       }
@@ -65,8 +66,11 @@ const portableTextComponents = {
   },
 };
 
-export default async function BlogDetailPage({ params }: BlogPageProps) {
-  const blog = await getBlogPost(params.slug);
+export default async function BlogPage({ params, searchParams }: BlogPageProps) {
+  const { slug } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  void resolvedSearchParams;
+  const blog = await getBlogPost(slug);
 
   if (!blog) {
     notFound();
