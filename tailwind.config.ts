@@ -48,7 +48,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ['class', "class"],
+  darkMode: ['class'],
   theme: {
   	extend: {
   		animation: {
@@ -115,6 +115,13 @@ const config: Config = {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
+  			// Named brand colors for explicit usage when needed
+  			brand: {
+  				bg: '#F9F8F6',
+  				surface: '#EFE9E3',
+  				secondary: '#C9B59C',
+  				primary: '#7B542F'
+  			},
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',

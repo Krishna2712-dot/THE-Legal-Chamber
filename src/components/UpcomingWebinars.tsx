@@ -52,13 +52,13 @@ function UpcomingWebinars() {
 
 
   return (
-    <div className="p-12 bg-gray-900">
+    <div className="p-12 bg-[#EFE9E3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center">
         <h2 className="text-base text-teal-600 font-semibold tracking-wide uppercase">
   FEATURED INSIGHTS
 </h2>
-<p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+<p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-foreground sm:text-4xl">
   Exploring Cases, Laws, and Legal Perspectives
 </p>
         </div>

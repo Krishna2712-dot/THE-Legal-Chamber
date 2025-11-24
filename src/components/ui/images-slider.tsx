@@ -24,30 +24,29 @@ export const ImagesSlider = ({
   const [loading, setLoading] = useState(false);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
-  const handleNext = () => {
+  const handleNext = React.useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex + 1 === images.length ? 0 : prevIndex + 1
     );
-  };
+  }, [images.length]);
 
-  const handlePrevious = () => {
+  const handlePrevious = React.useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
     );
-  };
+  }, [images.length]);
 
-  useEffect(() => {
-    loadImages();
-  }, []);
-
-  const loadImages = () => {
+  const loadImages = React.useCallback(() => {
     setLoading(true);
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.src = image;
         img.onload = () => resolve(image);
-        img.onerror = reject;
+        img.onerror = () => {
+          console.warn(`Failed to load image: ${image}`);
+          resolve(image); // Still resolve to show image even if load fails
+        };
       });
     });
 
@@ -56,8 +55,17 @@ export const ImagesSlider = ({
         setLoadedImages(loadedImages as string[]);
         setLoading(false);
       })
-      .catch((error) => console.error("Failed to load images", error));
-  };
+      .catch((error) => {
+        console.error("Failed to load images", error);
+        setLoadedImages(images); // Fallback to original images
+        setLoading(false);
+      });
+  }, [images]);
+
+  useEffect(() => {
+    loadImages();
+  }, [loadImages]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
@@ -81,7 +89,7 @@ export const ImagesSlider = ({
       window.removeEventListener("keydown", handleKeyDown);
       clearInterval(interval);
     };
-  }, []);
+  }, [autoplay, handleNext, handlePrevious]);
 
   const slideVariants = {
     initial: {
@@ -95,7 +103,6 @@ export const ImagesSlider = ({
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: [0.645, 0.045, 0.355, 1.0],
       },
     },
     upExit: {
@@ -142,9 +149,17 @@ export const ImagesSlider = ({
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
             variants={slideVariants}
-            className="image h-full w-full absolute inset-0 object-cover object-center"
+            className="image h-full w-full absolute inset-0 object-cover object-center z-0"
+            alt="Legal services background"
           />
         </AnimatePresence>
+      )}
+      {!areImagesLoaded && !loading && images.length > 0 && (
+        <img
+          src={images[0]}
+          className="h-full w-full absolute inset-0 object-cover object-center z-0"
+          alt="Legal services background"
+        />
       )}
     </div>
   );

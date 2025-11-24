@@ -42,24 +42,21 @@ function HeroSection() {
     <div
     className="h-auto md:h-[40rem] w-full rounded-md flex flex-col items-center justify-center relative overflow-visible mx-auto py-10 md:py-0"
     >
-        <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
+        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
         <div className="pb-10 pt-40 m-0 relative z-10 w-full text-center" >
             <h1
-            className="mt-20 md:mt-0 mb-0 pb-5 text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 leading-normal"
-            >Care Legal</h1>
+            className="mt-20 md:mt-0 mb-0 pb-5 text-4xl md:text-6xl font-bold text-primary leading-normal"
+            >The Legal Chambers</h1>
             <p
-            className="mt-0 font-normal text-base md:text-lg text-neutral-300 max-w-lg mx-auto"
-            >Dedicated to justice, Committed to you.</p>
+            className="mt-0 font-normal text-base md:text-lg text-muted-foreground max-w-lg mx-auto"
+            >Advocates of Justice, Architects of Resolution</p>
             
         </div>
 
-         <div className=" w-full  relative flex flex-col items-center justify-center overflow-hidden">
+         <div className="w-full relative flex flex-col items-stretch justify-center overflow-hidden">
                  <h2 className="text-3xl font-bold text-center mb-8 z-10">Our Clients</h2>
-                 <div className="flex justify-center w-full overflow-hidden px-4 sm:px-6 lg:px-8">
-                     <div className="w-full max-w-6xl">
+                 <div className="w-full overflow-hidden">
+                     <div className="w-full">
                      <InfiniteMovingCards
                          items={clientTestimonials}
                          direction="right"

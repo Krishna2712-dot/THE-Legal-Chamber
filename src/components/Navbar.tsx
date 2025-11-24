@@ -11,7 +11,7 @@ function Navbar({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
   return (
     <div
-    className={cn("fixed top-10 inset-x-1 max-w-3xl mx-auto z-40", className)}
+    className={cn("fixed top-6 inset-x-0 max-w-6xl mx-auto px-4 z-40", className)}
     >
         <Menu setActive={setActive}>
             {/* Flex wrapper adds spacing between items; adjust gap-6 as needed */}
@@ -21,18 +21,28 @@ function Navbar({ className }: { className?: string }) {
                 </MenuItem>
                 </Link>
 
+                <Link href={"/about"}>
+                <MenuItem setActive={setActive} active={active} item="About Us" />
+                </Link>
+
                 <Link href={"/our-team"}>
                 <MenuItem setActive={setActive} active={active} item="Our Team" />
                 </Link>
 
-
-                <Link href={"/notedjudgement"}>
-                <MenuItem setActive={setActive} active={active} item="Noted Judgement">
-                </MenuItem>
+                <Link href={"/practice-areas"}>
+                <MenuItem setActive={setActive} active={active} item="Practice Areas" />
                 </Link>
 
-                <Link href="/newsreport">
-                <MenuItem setActive={setActive} active={active} item="News Report" />
+                <Link href="/resources">
+                <MenuItem setActive={setActive} active={active} item="Resources" />
+                </Link>
+
+                <Link href="/clients">
+                <MenuItem setActive={setActive} active={active} item="Clients" />
+                </Link>
+
+                <Link href="/retainers">
+                <MenuItem setActive={setActive} active={active} item="Careers" />
                 </Link>
 
                 
