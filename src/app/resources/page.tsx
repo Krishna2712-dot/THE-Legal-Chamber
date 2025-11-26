@@ -71,12 +71,16 @@ export default function ResourcesPage() {
         
         if (!response.ok) {
           // Check if it's a configuration error
-          if (response.status === 503 && data.error) {
+          if (response.status === 503 && data?.error) {
             setError(
               "CMS is not configured yet. Please set up Sanity CMS. See README_CMS.md for instructions."
             );
           } else {
-            throw new Error(data.error || `Failed to fetch ${activeTab.id}`);
+            console.error(
+              `Error response while fetching ${activeTab.id}:`,
+              data?.error || response.statusText
+            );
+            setError(`Failed to load ${activeTab.label}. Please try again later.`);
           }
           setEntries([]);
         } else {

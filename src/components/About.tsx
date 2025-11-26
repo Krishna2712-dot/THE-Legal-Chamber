@@ -19,16 +19,19 @@ const highlights = [
 function About() {
   return (
     <ImagesSlider
-      className="relative h-[42rem] md:h-[46rem]"
+      className="relative h-[40rem] md:h-[46rem]"
       images={images}
-      overlayClassName="bg-gradient-to-b from-black/70 via-black/55 to-black/25"
+      // Very light full-screen overlay so images stay prominent
+      overlayClassName="bg-gradient-to-b from-black/15 via-black/10 to-black/5"
       autoplay
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-40 mx-auto max-w-3xl px-4 text-center text-white"
+        // Stronger local backdrop just behind the text for readability,
+        // while the rest of the image remains brighter
+        className="relative z-20 mx-auto max-w-3xl px-4 text-center text-white rounded-3xl bg-black/70 md:bg-black/60 backdrop-blur-sm py-8"
       >
         <motion.h2
           className="text-3xl font-semibold tracking-tight md:text-5xl"

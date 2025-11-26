@@ -133,12 +133,15 @@ export const ImagesSlider = ({
         perspective: "1000px",
       }}
     >
-      {areImagesLoaded && children}
       {areImagesLoaded && overlay && (
         <div
-          className={cn("absolute inset-0 bg-black/60 z-40", overlayClassName)}
+          className={cn(
+            "absolute inset-0 bg-black/40 z-10 pointer-events-none",
+            overlayClassName
+          )}
         />
       )}
+      {areImagesLoaded && children}
 
       {areImagesLoaded && (
         <AnimatePresence>
