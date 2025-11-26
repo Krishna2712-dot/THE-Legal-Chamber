@@ -8,9 +8,9 @@ const clientSegments = [
     icon: Building2,
     description: "Long-standing relationships with enterprises that rely on us for boardroom-to-courtroom strategy.",
     logos: [
-      { name: "Stayhook", sector: "Hospitality & Co-Living" },
-      { name: "Ko-Niwas", sector: "Sustainable Housing" },
-      { name: "Loyya Buildcon Pvt. Ltd.", sector: "Infrastructure & EPC" },
+      { name: "Aahana Stays Collective", sector: "Hospitality & Co-Living" },
+      { name: "Keshav Nivas Realty", sector: "Sustainable Housing" },
+      { name: "Rudra Buildcon India Pvt. Ltd.", sector: "Infrastructure & EPC" },
     ],
   },
   {
@@ -18,10 +18,10 @@ const clientSegments = [
     icon: Rocket,
     description: "Advising high-growth startups on fundraising, compliance, and expansion across sectors.",
     logos: [
-      { name: "Northstar Mobility", sector: "EV Logistics" },
-      { name: "Verdant Labs", sector: "HealthTech" },
-      { name: "ByteLedger", sector: "FinTech" },
-      { name: "Aether Studios", sector: "Media & IP" },
+      { name: "Veda Mobility Labs", sector: "EV Logistics" },
+      { name: "Nirali Life Sciences", sector: "HealthTech" },
+      { name: "Prithvi LedgerTech", sector: "FinTech" },
+      { name: "Akriti Media Studio", sector: "Media & IP" },
     ],
   },
   {
@@ -29,9 +29,9 @@ const clientSegments = [
     icon: Landmark,
     description: "Supporting institutions and public bodies with policy, infrastructure, and dispute mandates.",
     logos: [
-      { name: "State Utilities Consortium", sector: "Energy & Infrastructure" },
-      { name: "Global Relief Alliance", sector: "Non-Profit" },
-      { name: "Metro Urban Development Authority", sector: "Urban Planning" },
+      { name: "Sahyog State Utilities Forum", sector: "Energy & Infrastructure" },
+      { name: "Shraddha Relief Alliance", sector: "Non-Profit" },
+      { name: "Nagarika Urban Development Authority", sector: "Urban Planning" },
     ],
   },
 ];
@@ -58,14 +58,14 @@ export default function ClientsPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <p className="text-sm font-semibold uppercase tracking-wider text-[#7B542F] mb-4">
-              Our Clients
+              Clients & Retainers
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-[#7B542F] mb-6">
-              Trusted by Industry Leaders & Visionary Founders
+              Trusted by Industry Leaders & Retained Advisors
             </h1>
             <p className="text-lg text-[#3C2A21]/80 leading-relaxed">
               We partner with clients across industries—offering proactive guidance, responsive representation,
-              and collaborative engagement models tailored to their ambitions.
+              and retainership programs that keep counsel accessible for both families and enterprises.
             </p>
           </motion.header>
         </div>
@@ -131,6 +131,52 @@ export default function ClientsPage() {
                 </motion.section>
               );
             })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Retain Our Services */}
+      <section className="py-16 md:py-20 bg-[#EFE9E3] border-t border-[#C9B59C]/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl bg-white px-8 py-10 shadow-lg border border-[#C9B59C]/50"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-[#7B542F] mb-4 text-center">
+              Retain Our Services
+            </p>
+            <h2 className="text-3xl font-semibold text-center text-[#7B542F] mb-6">
+              Annual Legal Advisory Plan
+            </h2>
+            <p className="text-base text-[#3C2A21]/80 leading-relaxed mb-6">
+              At The Legal Chambers, we believe everyone deserves steady access to justice and reliable legal guidance without fearing
+              commercials. Our retainerships offer always-on counsel for individuals, families, and enterprises that value preventive legal strategy.
+            </p>
+            <div className="space-y-4 text-sm text-[#3C2A21]/80">
+              <p>
+                For an annual fee of <span className="font-semibold text-[#7B542F]">₹2,000</span>, individual clients receive:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Up to 10 legal consultations per year (in person or virtual)</li>
+                <li>One complimentary legal notice drafting and dispatch</li>
+              </ul>
+              <p className="pt-2">
+                This plan helps clients take timely decisions across property, tenancy, consumer disputes, employment questions, family law, and
+                personal documentation matters.
+              </p>
+              <p>
+                For companies, startups, and SMEs, retainership structures are tailored to their industry, scale, and continuity requirements so that
+                they can access counsel when expansion, compliance, or litigation windows open up.
+              </p>
+              <p className="text-xs text-[#3C2A21]/70 border-t border-dashed border-[#C9B59C]/60 pt-4">
+                Disclaimer: This plan is a professional retainership arrangement intended to provide ongoing legal advisory support. It does not
+                constitute solicitation, advertisement, or a guarantee of outcomes. All services follow the Bar Council of India Rules governing
+                advocates’ conduct and professional ethics.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>

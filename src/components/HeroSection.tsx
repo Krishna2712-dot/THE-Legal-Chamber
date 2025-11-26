@@ -8,31 +8,31 @@ const clientTestimonials = [
   {
     quote:
       'Their guidance transformed a stressful legal process into a clear path forward. I felt supported and well-informed at every step — outstanding representation.',
-    name: 'Alex Johnson',
-    title: 'Personal Injury Client',
+    name: 'Aditi Sharma',
+    title: 'Property & Inheritance Client',
   },
   {
     quote:
       "The team’s communication and attention to detail were exceptional. They prepared me thoroughly for every meeting and helped secure a favorable outcome.",
-    name: 'Samantha Lee',
+    name: 'Rohan Malhotra',
     title: 'Family Law Client',
   },
   {
     quote:
       "I gained confidence thanks to their expert advice. They crafted a strong strategy and negotiated on my behalf with professionalism and care.",
-    name: 'Michael Chen',
+    name: 'Meera Iyer',
     title: 'Employment Law Client',
   },
   {
     quote:
       'They understood the complexities of my case and advocated decisively. Their experience made all the difference in reaching the resolution I needed.',
-    name: 'Emily Taylor',
+    name: 'Vikram Desai',
     title: 'Civil Litigation Client',
   },
   {
     quote:
       'Their legal team protected my business interests and handled negotiations skillfully. I highly recommend them for commercial and contract matters.',
-    name: 'Chris Morales',
+    name: 'Kavya Bhandari',
     title: 'Corporate Client',
   },
 ];
