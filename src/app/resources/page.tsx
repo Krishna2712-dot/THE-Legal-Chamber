@@ -236,7 +236,7 @@ export default function ResourcesPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1, duration: 0.4 }}
-                    className="group flex h-full flex-col justify-between rounded-xl bg-background p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-2 hover:ring-[#7B542F]/20"
+                    className="group flex h-full flex-col rounded-xl bg-background p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-2 hover:ring-[#7B542F]/20"
                   >
                         {displayImageUrl && (
                           <div className="mb-4 rounded-lg overflow-hidden">
@@ -247,31 +247,35 @@ export default function ResourcesPage() {
                             />
                           </div>
                         )}
-                    <div>
-                      <h3 className="text-lg font-semibold text-[#7B542F] mb-3">{entry.title}</h3>
-                          <p className="text-sm leading-relaxed text-[#3C2A21]/70 mb-2">{entry.summary}</p>
-                          {entry.author && (
-                            <p className="text-xs text-[#3C2A21]/50 mt-2">By {entry.author}</p>
-                          )}
-                          {(() => {
-                            const date = entry.publishedAt || entry.judgementDate;
-                            return date ? (
-                              <p className="text-xs text-[#3C2A21]/50">
-                                {new Date(date).toLocaleDateString("en-US", {
-                                  year: "numeric",
-                                  month: "long",
-                                  day: "numeric",
-                                })}
+                    <div className="flex-1 flex flex-col min-h-0">
+                      <h3 className="text-lg font-semibold text-[#7B542F] mb-3 line-clamp-2">{entry.title}</h3>
+                          <div className="flex-1 overflow-hidden">
+                            <p className="text-sm leading-relaxed text-[#3C2A21]/70 mb-2 max-h-20 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-[#C9B59C]/40 scrollbar-track-transparent">{entry.summary}</p>
+                          </div>
+                          <div className="mt-auto pt-3 space-y-1">
+                            {entry.author && (
+                              <p className="text-xs text-[#3C2A21]/50">By {entry.author}</p>
+                            )}
+                            {(() => {
+                              const date = entry.publishedAt || entry.judgementDate;
+                              return date ? (
+                                <p className="text-xs text-[#3C2A21]/50">
+                                  {new Date(date).toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                  })}
+                                </p>
+                              ) : null;
+                            })()}
+                            {activeTab.id === "media" && entry.mediaType && (
+                              <p className="text-xs text-[#7B542F] font-medium">
+                                {entry.mediaType.charAt(0).toUpperCase() + entry.mediaType.slice(1)}
                               </p>
-                            ) : null;
-                          })()}
-                          {activeTab.id === "media" && entry.mediaType && (
-                            <p className="text-xs text-[#7B542F] mt-2 font-medium">
-                              {entry.mediaType.charAt(0).toUpperCase() + entry.mediaType.slice(1)}
-                            </p>
-                          )}
+                            )}
+                          </div>
                     </div>
-                    <div className="mt-6">
+                    <div className="mt-4 pt-4 border-t border-[#C9B59C]/20">
                       <Link
                             href={entryLink}
                             target={activeTab.id === "news" && entry.link ? "_blank" : "_self"}

@@ -43,8 +43,10 @@ const portableTextComponents = {
   types: {
     block: ({ value, children }: any) => {
       const { style } = value;
-      if (style === "normal") {
-        return <p className="mb-4 text-[#3C2A21] leading-relaxed">{children}</p>;
+      
+      // Handle headings
+      if (style === "h1") {
+        return <h1 className="text-3xl font-bold text-[#7B542F] mt-10 mb-6">{children}</h1>;
       }
       if (style === "h2") {
         return <h2 className="text-2xl font-bold text-[#7B542F] mt-8 mb-4">{children}</h2>;
@@ -52,6 +54,14 @@ const portableTextComponents = {
       if (style === "h3") {
         return <h3 className="text-xl font-semibold text-[#7B542F] mt-6 mb-3">{children}</h3>;
       }
+      if (style === "h4") {
+        return <h4 className="text-lg font-semibold text-[#7B542F] mt-4 mb-2">{children}</h4>;
+      }
+      if (style === "blockquote") {
+        return <blockquote className="border-l-4 border-[#7B542F] pl-4 italic my-4 text-[#3C2A21]/80">{children}</blockquote>;
+      }
+      
+      // Default paragraph
       return <p className="mb-4 text-[#3C2A21] leading-relaxed">{children}</p>;
     },
     image: ({ value }: any) => {
@@ -61,6 +71,32 @@ const portableTextComponents = {
         <div className="my-8 rounded-lg overflow-hidden">
           <img src={imageUrl} alt={value.alt || "Blog image"} className="w-full h-auto" />
         </div>
+      );
+    },
+  },
+  list: {
+    bullet: ({ children }: any) => <ul className="mb-4 ml-6 list-disc space-y-2">{children}</ul>,
+    number: ({ children }: any) => <ol className="mb-4 ml-6 list-decimal space-y-2">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }: any) => <li className="text-[#3C2A21] leading-relaxed">{children}</li>,
+    number: ({ children }: any) => <li className="text-[#3C2A21] leading-relaxed">{children}</li>,
+  },
+  marks: {
+    strong: ({ children }: any) => <strong className="font-bold text-[#3C2A21]">{children}</strong>,
+    em: ({ children }: any) => <em className="italic">{children}</em>,
+    code: ({ children }: any) => <code className="bg-[#EFE9E3] px-2 py-1 rounded text-sm font-mono">{children}</code>,
+    link: ({ value, children }: any) => {
+      const target = (value?.href || "").startsWith("http") ? "_blank" : undefined;
+      return (
+        <a
+          href={value?.href}
+          target={target}
+          rel={target === "_blank" ? "noopener noreferrer" : undefined}
+          className="text-[#7B542F] hover:text-[#3C2A21] underline"
+        >
+          {children}
+        </a>
       );
     },
   },
@@ -137,11 +173,11 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
 
         {/* Content */}
         {blog.content && blog.content.length > 0 && (
-          <div className="mb-8">
-            <div className="prose prose-lg max-w-none">
+          <article className="mb-8">
+            <div className="prose prose-lg max-w-none text-[#3C2A21]">
               <PortableText value={blog.content} components={portableTextComponents} />
             </div>
-          </div>
+          </article>
         )}
       </div>
     </main>
