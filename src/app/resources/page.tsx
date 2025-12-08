@@ -248,7 +248,7 @@ export default function ResourcesPage() {
                           </div>
                         )}
                     <div className="flex-1 flex flex-col min-h-0">
-                      <h3 className="text-lg font-semibold text-[#7B542F] mb-3 line-clamp-2">{entry.title}</h3>
+                      <h3 className="text-lg font-semibold text-[#7B542F] mb-3">{entry.title}</h3>
                           <div className="flex-1 overflow-hidden">
                             <p className="text-sm leading-relaxed text-[#3C2A21]/70 mb-2 max-h-20 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-[#C9B59C]/40 scrollbar-track-transparent">{entry.summary}</p>
                           </div>

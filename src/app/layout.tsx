@@ -20,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) - moved to afterInteractive to prevent hydration issues */}
+      </head>
+      <body className={inter.className} suppressHydrationWarning>
+        {/* Google Analytics - Load after hydration to prevent mismatch */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-H30LR1LVMM"
@@ -34,8 +37,6 @@ export default function RootLayout({
             gtag('config', 'G-H30LR1LVMM');
           `}
         </Script>
-      </head>
-      <body className={inter.className}>
         <DisclaimerProvider>
           <div className="relative w-full flex items-center justify-center ">
             <Navbar />
