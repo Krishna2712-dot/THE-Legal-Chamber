@@ -69,12 +69,35 @@ async function getBlogPost(slug: string) {
         });
       }
       
-      // Ensure content is always an array for PortableText
+      // Handle non-array content: check for nested structures before converting
       if (!Array.isArray(blog.content)) {
         if (process.env.NODE_ENV === 'development') {
-          console.warn('Blog content is not an array, converting:', blog.content);
+          console.warn('Blog content is not an array, checking for nested structure:', blog.content);
         }
-        blog.content = [];
+        
+        // Check if content is an object with children or items array
+        if (typeof blog.content === 'object' && blog.content !== null) {
+          if (blog.content.children && Array.isArray(blog.content.children)) {
+            if (process.env.NODE_ENV === 'development') {
+              console.log('Found nested content structure in object, using children array...');
+            }
+            blog.content = blog.content.children;
+          } else if (blog.content.items && Array.isArray(blog.content.items)) {
+            if (process.env.NODE_ENV === 'development') {
+              console.log('Found items array in object, using it as content...');
+            }
+            blog.content = blog.content.items;
+          } else {
+            // No nested structure found, convert to empty array
+            if (process.env.NODE_ENV === 'development') {
+              console.warn('No nested structure found, converting to empty array');
+            }
+            blog.content = [];
+          }
+        } else {
+          // Not an object, convert to empty array
+          blog.content = [];
+        }
       }
       
       // If content array has only 1 item and it's an object with children/items, it might be nested incorrectly
@@ -261,7 +284,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
               <PortableText value={blog.content} components={portableTextComponents} />
             </div>
           </article>
-        ) : blog.content ? (
+        ) : process.env.NODE_ENV === 'development' && blog.content ? (
           <div className="mb-8 p-6 rounded-xl bg-yellow-50 border-2 border-yellow-300">
             <p className="text-yellow-800 font-semibold mb-2">⚠️ Content Debug Info:</p>
             <p className="text-yellow-700 text-sm mb-2">
