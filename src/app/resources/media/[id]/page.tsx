@@ -4,6 +4,7 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Calendar } from "lucide-react";
 import { PortableText } from "@portabletext/react";
+import ShareButton from "@/components/ShareButton";
 
 type MediaPageProps = {
   params: Promise<{
@@ -64,8 +65,11 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
 
         {/* Header */}
         <div className="mb-8">
-          <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold mb-4">
-            {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
+              {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
+            </div>
+            <ShareButton url={`/resources/media/${id}`} title={media.title} />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#7B542F] mb-4">{media.title}</h1>
           {media.publishedAt && (

@@ -4,6 +4,7 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { PortableText } from "@portabletext/react";
+import ShareButton from "@/components/ShareButton";
 
 type BlogPageProps = {
   params: Promise<{
@@ -91,12 +92,12 @@ async function getBlogPost(slug: string) {
             // No nested structure found, convert to empty array
             if (process.env.NODE_ENV === 'development') {
               console.warn('No nested structure found, converting to empty array');
-            }
+        }
             blog.content = [];
           }
         } else {
           // Not an object, convert to empty array
-          blog.content = [];
+        blog.content = [];
         }
       }
       
@@ -234,8 +235,11 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
 
         {/* Header */}
         <div className="mb-8">
-          <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold mb-4">
-            Blog Post
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
+              Blog Post
+            </div>
+            <ShareButton url={`/resources/blogs/${slug}`} title={blog.title} />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#7B542F] mb-4">{blog.title}</h1>
           

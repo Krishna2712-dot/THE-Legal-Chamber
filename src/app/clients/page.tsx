@@ -4,31 +4,18 @@ import { Building2, Rocket, Landmark } from "lucide-react";
 
 const clientSegments = [
   {
-    title: "Strategic Partners",
+    title: "Our Clients",
     icon: Building2,
-    description: "Long-standing relationships with enterprises that rely on us for boardroom-to-courtroom strategy.",
+    description:
+      "Long-standing partnerships across industries, from strategic enterprises and emerging businesses to institutional and public bodies.",
     logos: [
       { name: "Aahana Stays Collective", sector: "Hospitality & Co-Living" },
       { name: "Keshav Nivas Realty", sector: "Sustainable Housing" },
       { name: "Rudra Buildcon India Pvt. Ltd.", sector: "Infrastructure & EPC" },
-    ],
-  },
-  {
-    title: "Emerging Businesses",
-    icon: Rocket,
-    description: "Advising high-growth startups on fundraising, compliance, and expansion across sectors.",
-    logos: [
       { name: "Veda Mobility Labs", sector: "EV Logistics" },
       { name: "Nirali Life Sciences", sector: "HealthTech" },
       { name: "Prithvi LedgerTech", sector: "FinTech" },
       { name: "Akriti Media Studio", sector: "Media & IP" },
-    ],
-  },
-  {
-    title: "Institutional & Public Clients",
-    icon: Landmark,
-    description: "Supporting institutions and public bodies with policy, infrastructure, and dispute mandates.",
-    logos: [
       { name: "Sahyog State Utilities Forum", sector: "Energy & Infrastructure" },
       { name: "Shraddha Relief Alliance", sector: "Non-Profit" },
       { name: "Nagarika Urban Development Authority", sector: "Urban Planning" },
@@ -152,29 +139,24 @@ export default function ClientsPage() {
               Annual Legal Advisory Plan
             </h2>
             <p className="text-base text-[#3C2A21]/80 leading-relaxed mb-6">
-              At The Legal Chambers, we believe everyone deserves steady access to justice and reliable legal guidance without fearing
-              commercials. Our retainerships offer always-on counsel for individuals, families, and enterprises that value preventive legal strategy.
+              At The Legal Chambers, we believe that everyone should have access to Justice and reliable legal guidance without fear of commercials. To facilitate this, we offer an Annual Legal Advisory Plan that allows individuals and families to retain our services for ongoing legal support throughout the year.
             </p>
             <div className="space-y-4 text-sm text-[#3C2A21]/80">
               <p>
-                For an annual fee of <span className="font-semibold text-[#7B542F]">₹2,000</span>, individual clients receive:
+                For an annual fee of <span className="font-semibold text-[#7B542F]">₹2,000</span>, individual clients who retain us under this plan are entitled to:
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Up to 10 legal consultations per year (in person or virtual)</li>
-                <li>One complimentary legal notice drafting and dispatch</li>
+                <li>One complimentary legal notice drafting and sending</li>
               </ul>
               <p className="pt-2">
-                This plan helps clients take timely decisions across property, tenancy, consumer disputes, employment questions, family law, and
-                personal documentation matters.
+                This retainership arrangement enables clients to seek timely and preventive legal advice in matters such as property, tenancy, consumer issues, employment, family law, and personal documentation. Our objective is to help clients make informed legal decisions and manage their matters efficiently.
               </p>
               <p>
-                For companies, startups, and SMEs, retainership structures are tailored to their industry, scale, and continuity requirements so that
-                they can access counsel when expansion, compliance, or litigation windows open up.
+                For companies, startups, and SMEs, our retainership services and plans are customized based on the nature, scale, and continuity of their legal requirements.
               </p>
               <p className="text-xs text-[#3C2A21]/70 border-t border-dashed border-[#C9B59C]/60 pt-4">
-                Disclaimer: This plan is a professional retainership arrangement intended to provide ongoing legal advisory support. It does not
-                constitute solicitation, advertisement, or a guarantee of outcomes. All services follow the Bar Council of India Rules governing
-                advocates’ conduct and professional ethics.
+                Disclaimer: This plan is a professional retainership arrangement intended to provide ongoing legal advisory support. It does not constitute solicitation, advertisement, or a guarantee of outcomes. All services are rendered strictly in accordance with the Bar Council of India Rules governing advocates’ conduct and professional ethics.
               </p>
             </div>
           </motion.div>
