@@ -83,10 +83,10 @@ export default async function JudgementDetailPage({ params, searchParams }: Judg
         <div className="mb-8">
           <div className="flex items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-2">
-              <Scale className="w-6 h-6 text-[#7B542F]" />
-              <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
-                {judgement.court ? judgement.court.charAt(0).toUpperCase() + judgement.court.slice(1) + " Court" : "Legal Judgement"}
-              </div>
+            <Scale className="w-6 h-6 text-[#7B542F]" />
+            <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
+              {judgement.court ? judgement.court.charAt(0).toUpperCase() + judgement.court.slice(1) + " Court" : "Legal Judgement"}
+            </div>
             </div>
             <ShareButton url={`/resources/judgements/${id}`} title={judgement.title} />
           </div>

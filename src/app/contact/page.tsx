@@ -178,7 +178,7 @@ export default function ContactPage() {
                     </motion.span>
                   ))}
                 </div>
-              </div>
+                </div>
             </motion.section>
 
             {/* Bottom Left - Map */}

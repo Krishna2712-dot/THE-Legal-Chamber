@@ -41,7 +41,7 @@ export const ImagesSlider = ({
     setLoading(true);
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
-        const img = new Image();
+        const img = new window.Image();
         img.src = image;
         img.onload = () => resolve(image);
         img.onerror = () => {

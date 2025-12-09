@@ -237,7 +237,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
-              Blog Post
+            Blog Post
             </div>
             <ShareButton url={`/resources/blogs/${slug}`} title={blog.title} />
           </div>

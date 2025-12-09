@@ -67,7 +67,7 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
-              {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
+            {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
             </div>
             <ShareButton url={`/resources/media/${id}`} title={media.title} />
           </div>
