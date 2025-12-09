@@ -83,16 +83,20 @@ export default function ClientsPage() {
                 >
                   <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between mb-8">
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-[#C9B59C]/20">
-                        <Icon className="w-6 h-6 text-[#7B542F]" />
-                      </div>
+                      {Icon && (
+                        <div className="p-3 rounded-lg bg-[#C9B59C]/20">
+                          <Icon className="w-6 h-6 text-[#7B542F]" />
+                        </div>
+                      )}
                       <div className="max-w-xl">
                         <h2 className="text-2xl font-semibold text-[#7B542F] md:text-3xl mb-3">
                           {segment.title}
                         </h2>
-                        <p className="text-base leading-relaxed text-[#3C2A21]/70">
-                          {segment.description}
-                        </p>
+                        {segment.description && (
+                          <p className="text-base leading-relaxed text-[#3C2A21]/70">
+                            {segment.description}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>

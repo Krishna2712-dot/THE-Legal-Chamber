@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 export const ImagesSlider = ({
   images,
@@ -145,23 +146,33 @@ export const ImagesSlider = ({
 
       {areImagesLoaded && (
         <AnimatePresence>
-          <motion.img
+          <motion.div
             key={currentIndex}
-            src={loadedImages[currentIndex]}
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
             variants={slideVariants}
-            className="image h-full w-full absolute inset-0 object-cover object-center z-0"
-            alt="Legal services background"
-          />
+            className="image h-full w-full absolute inset-0 z-0"
+          >
+            <Image
+              src={loadedImages[currentIndex]}
+              width={1920}
+              height={1080}
+              className="h-full w-full object-cover object-center"
+              alt="Legal services background"
+              unoptimized
+            />
+          </motion.div>
         </AnimatePresence>
       )}
       {!areImagesLoaded && !loading && images.length > 0 && (
-        <img
+        <Image
           src={images[0]}
+          width={1920}
+          height={1080}
           className="h-full w-full absolute inset-0 object-cover object-center z-0"
           alt="Legal services background"
+          unoptimized
         />
       )}
     </div>

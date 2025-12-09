@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -14,36 +14,36 @@ function Footer() {
           <h2 className="text-foreground text-lg font-semibold mb-4">Quick Links</h2>
           <ul>
             <li>
-              <a
+              <Link
                 href="/"
                 className="hover:text-primary transition-colors duration-300"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/about"
                 className="hover:text-primary transition-colors duration-300"
               >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/clients"
                 className="hover:text-primary transition-colors duration-300"
               >
                 Clients/Retainers
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/contact"
                 className="hover:text-primary transition-colors duration-300"
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

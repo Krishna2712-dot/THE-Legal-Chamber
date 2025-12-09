@@ -65,15 +65,15 @@ export default function PracticeAreasLayout({
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "K Block, Defence Colony",
-      "addressLocality": "New Delhi",
-      "postalCode": "110024",
+      "streetAddress": "483, Lawyers Chambers, Block-II",
+      "addressLocality": "Delhi High Court, New Delhi",
+      "postalCode": "11003",
       "addressCountry": "IN"
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-96627-78086",
-      "email": "support@thelegalchambers.org",
+      "email": "office@thelegalchambers.org",
       "contactType": "customer service",
       "areaServed": "IN",
       "availableLanguage": "English"
