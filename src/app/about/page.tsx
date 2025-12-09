@@ -67,10 +67,10 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4 text-[#3C2A21] leading-7 max-w-[65ch]">
                 <p className="text-[1.05rem]">
-                  The Legal Chambers is a full-service law firm offering integrated, strategic, and high-value legal solutions across the full spectrum of practice areas. With a PAN-India presence and a multidisciplinary team of experienced professionals, the firm represents leading corporations, institutions, and individuals in complex and high-stakes matters.
+                  We are a multidisciplinary, PAN-India law firm committed to delivering comprehensive, strategic, and ethically grounded legal solutions. Built on the belief that the law must serve both justice and human dignity, our firm approaches every matter with depth, clarity, and a holistic understanding of its social and economic implications. Our practice spans litigation, dispute resolution, regulatory compliance, drafting, advisory, and specialized legal domains—serving individuals, businesses, institutions, and emerging sectors with equal dedication.
                 </p>
                 <p className="text-[1.05rem]">
-                  We combine deep legal insight with commercial acumen to deliver advice that is clear, actionable, and aligned with business objectives. Our approach is rooted in precision, integrity, and an unwavering commitment to excellence.
+                  What distinguishes our firm is our philosophy: that effective legal practice must integrate human values with professional excellence. We engage with each brief not merely as a legal challenge, but as a responsibility to secure outcomes that are sustainable, fair, and aligned with the broader good. Our team combines rigorous legal acumen with a compassionate, solution-oriented mindset, ensuring that every client receives attentive, high-quality representation. From complex disputes to preventive legal strategies, we work proactively, transparently, and with a long-term vision. Driven by integrity, innovation, and a commitment to accessible justice, we strive to create a legal ecosystem where expertise meets empathy—and where no rightful claim is overlooked because of circumstance or lack of resources.
                 </p>
               </div>
             </div>
@@ -109,10 +109,10 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4 text-[#3C2A21] leading-7 max-w-[65ch]">
                 <p className="text-[1.05rem]">
-                  We believe that effective legal representation demands more than technical proficiency — it requires foresight, adaptability, and trust. At The Legal Chambers, every engagement is guided by these principles.
+                  Our firm stands apart through a philosophy rooted in Integral Humanism—an approach that views every legal matter through a holistic, responsible, and human-centric lens. This means offering strategic counsel that balances legal precision with ethical clarity, practical realities, and long-term sustainability. We understand that individuals and institutions thrive when their legal foundations are strong, compliant, and socially conscious, and we deliver solutions designed to support that vision across all sectors and jurisdictions.
                 </p>
                 <p className="text-[1.05rem]">
-                  Our philosophy is simple: to provide sophisticated, solution-oriented legal services that help our clients navigate complexity with confidence. We measure our success not by the volume of matters handled, but by the value and clarity we bring to each client relationship.
+                  At the same time, we remain deeply committed to the belief that no person should be left at the whims and fancies of fate merely for want of resources to pursue justice. This balance—combining high-end capability with an unwavering commitment to fairness—defines who we are and drives us to provide legal services that are commercially sound, socially relevant, and fundamentally just.
                 </p>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function AboutPage() {
             </div>
             <div className="max-w-[65ch] space-y-4 text-[#3C2A21] leading-7">
               <p className="text-[1.05rem]">
-                At The Legal Chambers, our methodology combines in-depth legal research, pragmatic analysis, and sectoral understanding. We maintain a meticulous focus on detail while ensuring that our counsel aligns with the larger strategic goals of our clients.
+                The team of The Legal Chambers believes that every individual across the world should get legal services and in this spirit we are committed to social responsibility not only rendering our legal service to all the person but also by rendering “pro bono” legal services and supporting social responsibility initiatives.
               </p>
               <p className="text-[1.05rem]">
                 Our professionals are trained to anticipate challenges, mitigate risks, and develop forward-looking solutions. Every client engagement is treated with the confidentiality, diligence, and responsiveness that corporate decision-makers expect from a trusted legal partner.

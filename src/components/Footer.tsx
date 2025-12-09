@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -14,36 +14,36 @@ function Footer() {
           <h2 className="text-foreground text-lg font-semibold mb-4">Quick Links</h2>
           <ul>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="hover:text-primary transition-colors duration-300"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/about"
                 className="hover:text-primary transition-colors duration-300"
               >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/clients"
                 className="hover:text-primary transition-colors duration-300"
               >
-                Courses
-              </a>
+                Clients/Retainers
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/contact"
                 className="hover:text-primary transition-colors duration-300"
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -72,9 +72,9 @@ function Footer() {
         </div>
         <div>
           <h2 className="text-foreground text-lg font-semibold mb-4">Contact Us</h2>
-          <p>Head Office: K Block, Defence Colony, New Delhi</p>
-          <p>Email: support@thelegalchambers.org</p>
-          <p>Phone: 9662778086</p>
+          <p>Head Office: 483, Lawyers Chambers, Block-II, Delhi High Court, Delhi - 11003</p>
+          <p>Email: office@thelegalchambers.org</p>
+          <p>Phone: +91 96627 78086</p>
         </div>
         </div>
         <p className="text-center text-xs pt-8">© 2024 The Legal Chambers. All rights reserved.</p>

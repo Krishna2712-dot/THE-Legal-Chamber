@@ -3,6 +3,7 @@ import { client, isSanityConfigured } from "@/sanity/lib/client";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Scale } from "lucide-react";
 import { PortableText } from "@portabletext/react";
+import ShareButton from "@/components/ShareButton";
 
 type JudgementPageProps = {
   params: Promise<{
@@ -80,11 +81,14 @@ export default async function JudgementDetailPage({ params, searchParams }: Judg
 
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="flex items-center gap-2">
             <Scale className="w-6 h-6 text-[#7B542F]" />
             <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
               {judgement.court ? judgement.court.charAt(0).toUpperCase() + judgement.court.slice(1) + " Court" : "Legal Judgement"}
             </div>
+            </div>
+            <ShareButton url={`/resources/judgements/${id}`} title={judgement.title} />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#7B542F] mb-4">{judgement.title}</h1>
           
