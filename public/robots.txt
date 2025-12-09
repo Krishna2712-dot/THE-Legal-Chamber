@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /resources/judgements/
+Disallow: /resources/media/
+
+Sitemap: https://www.thelegalchambers.org/sitemap.xml
+
