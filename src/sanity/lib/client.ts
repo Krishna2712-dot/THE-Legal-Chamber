@@ -23,7 +23,7 @@ if (!projectId) {
 export const client = createClient({
   projectId: projectId || "missing-project-id",
   dataset: dataset,
-  useCdn: true,
+  useCdn: false, // Disabled CDN to ensure fresh content from Sanity
   apiVersion: "2024-01-01",
 });
 
