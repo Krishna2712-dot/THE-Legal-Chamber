@@ -25,26 +25,11 @@ async function getBlogPost(slug: string) {
         title,
         slug,
         summary,
-        content[]{
+        content[] {
           ...,
           _type == "image" => {
             ...,
-            asset->
-          },
-          markDefs[]{
-            ...,
-            _type == "link" => {
-              ...,
-              href
-            }
-          },
-          children[]{
-            ...,
-            marks[],
-            _type == "span" => {
-              ...,
-              marks[]
-            }
+            "asset": asset->
           }
         },
         featuredImage,
@@ -52,73 +37,13 @@ async function getBlogPost(slug: string) {
         author,
         featured
       }`,
-      { slug }
+      { slug },
+      {
+        cache: "no-store",
+        next: { revalidate: 0 },
+      }
     );
     
-    // Debug and ensure content is properly formatted
-    if (blog && blog.content) {
-      // Log content structure for debugging
-      if (process.env.NODE_ENV === 'development') {
-        console.log('Blog content received:', {
-          hasContent: !!blog.content,
-          isArray: Array.isArray(blog.content),
-          type: typeof blog.content,
-          length: blog.content?.length,
-          firstItem: blog.content?.[0],
-          firstItemType: blog.content?.[0]?._type,
-          firstItemKeys: blog.content?.[0] ? Object.keys(blog.content[0]) : []
-        });
-      }
-      
-      // Handle non-array content: check for nested structures before converting
-      if (!Array.isArray(blog.content)) {
-        if (process.env.NODE_ENV === 'development') {
-          console.warn('Blog content is not an array, checking for nested structure:', blog.content);
-        }
-        
-        // Check if content is an object with children or items array
-        if (typeof blog.content === 'object' && blog.content !== null) {
-          if (blog.content.children && Array.isArray(blog.content.children)) {
-            if (process.env.NODE_ENV === 'development') {
-              console.log('Found nested content structure in object, using children array...');
-            }
-            blog.content = blog.content.children;
-          } else if (blog.content.items && Array.isArray(blog.content.items)) {
-            if (process.env.NODE_ENV === 'development') {
-              console.log('Found items array in object, using it as content...');
-            }
-            blog.content = blog.content.items;
-          } else {
-            // No nested structure found, convert to empty array
-            if (process.env.NODE_ENV === 'development') {
-              console.warn('No nested structure found, converting to empty array');
-        }
-            blog.content = [];
-          }
-        } else {
-          // Not an object, convert to empty array
-        blog.content = [];
-        }
-      }
-      
-      // If content array has only 1 item and it's an object with children/items, it might be nested incorrectly
-      if (blog.content.length === 1 && blog.content[0] && typeof blog.content[0] === 'object') {
-        const firstItem = blog.content[0];
-        // Check if this single item contains the actual content array
-        if (firstItem.children && Array.isArray(firstItem.children)) {
-          if (process.env.NODE_ENV === 'development') {
-            console.log('Found nested content structure, flattening...');
-          }
-          // The content might be nested - use the children array
-          blog.content = firstItem.children;
-        } else if (firstItem.items && Array.isArray(firstItem.items)) {
-          if (process.env.NODE_ENV === 'development') {
-            console.log('Found items array, using it as content...');
-          }
-          blog.content = firstItem.items;
-        }
-      }
-    }
     
     return blog;
   } catch (error) {
@@ -129,42 +54,6 @@ async function getBlogPost(slug: string) {
 
 const portableTextComponents = {
   types: {
-    block: ({ value, children }: any) => {
-      if (!value) return null;
-      const { style, listItem } = value;
-      
-      // Handle list items within blocks
-      if (listItem === "bullet") {
-        return <li className="text-[#3C2A21] leading-relaxed mb-2 ml-4">{children}</li>;
-      }
-      if (listItem === "number") {
-        return <li className="text-[#3C2A21] leading-relaxed mb-2 ml-4">{children}</li>;
-      }
-      
-      // Handle headings
-      if (style === "h1") {
-        return <h1 className="text-3xl font-bold text-[#7B542F] mt-10 mb-6">{children}</h1>;
-      }
-      if (style === "h2") {
-        return <h2 className="text-2xl font-bold text-[#7B542F] mt-8 mb-4">{children}</h2>;
-      }
-      if (style === "h3") {
-        return <h3 className="text-xl font-semibold text-[#7B542F] mt-6 mb-3">{children}</h3>;
-      }
-      if (style === "h4") {
-        return <h4 className="text-lg font-semibold text-[#7B542F] mt-4 mb-2">{children}</h4>;
-      }
-      if (style === "blockquote") {
-        return <blockquote className="border-l-4 border-[#7B542F] pl-4 italic my-4 text-[#3C2A21]/80">{children}</blockquote>;
-      }
-      
-      // Default paragraph
-      return <p className="mb-4 text-[#3C2A21] leading-relaxed">{children}</p>;
-    },
-    span: ({ children }: any) => {
-      // Handle inline spans (text nodes within blocks)
-      return <span>{children}</span>;
-    },
     image: ({ value }: any) => {
       if (!value?.asset) return null;
       try {
@@ -179,6 +68,14 @@ const portableTextComponents = {
         return null;
       }
     },
+  },
+  block: {
+    normal: ({ children }: any) => <p className="mb-4 text-[#3C2A21] leading-relaxed">{children}</p>,
+    h1: ({ children }: any) => <h1 className="text-3xl font-bold text-[#7B542F] mt-10 mb-6">{children}</h1>,
+    h2: ({ children }: any) => <h2 className="text-2xl font-bold text-[#7B542F] mt-8 mb-4">{children}</h2>,
+    h3: ({ children }: any) => <h3 className="text-xl font-semibold text-[#7B542F] mt-6 mb-3">{children}</h3>,
+    h4: ({ children }: any) => <h4 className="text-lg font-semibold text-[#7B542F] mt-4 mb-2">{children}</h4>,
+    blockquote: ({ children }: any) => <blockquote className="border-l-4 border-[#7B542F] pl-4 italic my-4 text-[#3C2A21]/80">{children}</blockquote>,
   },
   list: {
     bullet: ({ children }: any) => <ul className="mb-4 ml-6 list-disc space-y-1 text-[#3C2A21]">{children}</ul>,
@@ -288,35 +185,11 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
               <PortableText value={blog.content} components={portableTextComponents} />
             </div>
           </article>
-        ) : process.env.NODE_ENV === 'development' && blog.content ? (
-          <div className="mb-8 p-6 rounded-xl bg-yellow-50 border-2 border-yellow-300">
-            <p className="text-yellow-800 font-semibold mb-2">⚠️ Content Debug Info:</p>
-            <p className="text-yellow-700 text-sm mb-2">
-              Content exists: Yes
-            </p>
-            <p className="text-yellow-700 text-sm mb-2">
-              Content type: {typeof blog.content}
-            </p>
-            <p className="text-yellow-700 text-sm mb-2">
-              Is Array: {Array.isArray(blog.content) ? 'Yes' : 'No'}
-            </p>
-            <p className="text-yellow-700 text-sm mb-2">
-              Length: {Array.isArray(blog.content) ? blog.content.length : 'N/A'}
-            </p>
-            {blog.content && typeof blog.content === 'object' && (
-              <details className="mt-4">
-                <summary className="text-yellow-700 text-sm cursor-pointer font-semibold">
-                  View Raw Content Structure (Click to expand)
-                </summary>
-                <pre className="text-xs bg-yellow-100 p-4 rounded mt-2 overflow-auto max-h-96">
-                  {JSON.stringify(blog.content, null, 2)}
-                </pre>
-              </details>
-            )}
-          </div>
         ) : (
           <div className="mb-8 p-6 rounded-xl bg-[#EFE9E3] border border-[#C9B59C]/40">
-            <p className="text-[#3C2A21]/70">No content available for this blog post.</p>
+            <p className="text-[#3C2A21]/70 italic">
+              This blog post contains only the summary above. Full content will be added soon.
+            </p>
           </div>
         )}
       </div>
