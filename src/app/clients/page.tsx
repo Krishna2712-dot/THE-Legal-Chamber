@@ -156,13 +156,6 @@ export default function ClientsPage() {
               commercials. Our retainerships offer always-on counsel for individuals, families, and enterprises that value preventive legal strategy.
             </p>
             <div className="space-y-4 text-sm text-[#3C2A21]/80">
-              <p>
-                For an annual fee of <span className="font-semibold text-[#7B542F]">₹2,000</span>, individual clients receive:
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Up to 10 legal consultations per year (in person or virtual)</li>
-                <li>One complimentary legal notice drafting and dispatch</li>
-              </ul>
               <p className="pt-2">
                 This plan helps clients take timely decisions across property, tenancy, consumer disputes, employment questions, family law, and
                 personal documentation matters.

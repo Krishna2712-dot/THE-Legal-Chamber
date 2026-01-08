@@ -42,6 +42,7 @@ interface ResourceEntry {
   summary: string;
   link?: string;
   image?: any;
+  images?: any[];
   mediaType?: string;
   slug?: { current: string };
   publishedAt?: string;
@@ -98,10 +99,10 @@ export default function ResourcesPage() {
 
     fetchData();
 
-    // Set up polling to check for updates every 10 seconds
+    // Set up polling to check for updates every 10 minutes
     const intervalId = setInterval(() => {
       fetchData();
-    }, 10000);
+    }, 600000);
 
     // Also listen for focus events to refresh when user returns to tab
     const handleFocus = () => {
@@ -221,8 +222,17 @@ export default function ResourcesPage() {
                     }
 
                     // Handle image URL for all content types
+                    // Support both images array and single image field
                     let displayImageUrl: string | null = null;
-                    if (entry.image) {
+                    if (entry.images && Array.isArray(entry.images) && entry.images.length > 0) {
+                      // Use first image from images array
+                      try {
+                        displayImageUrl = urlFor(entry.images[0]).width(400).height(250).url();
+                      } catch (e) {
+                        console.error("Error generating image URL:", e);
+                      }
+                    } else if (entry.image) {
+                      // Fallback to single image field
                       try {
                         displayImageUrl = urlFor(entry.image).width(400).height(250).url();
                       } catch (e) {
