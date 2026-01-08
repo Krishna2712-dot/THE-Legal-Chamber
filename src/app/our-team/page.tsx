@@ -90,10 +90,10 @@ export default function OurTeamPage() {
 
     fetchTeamMembers();
 
-    // Set up polling to check for updates every 10 minutes
+    // Set up polling to check for updates every 5 seconds
     const intervalId = setInterval(() => {
       fetchTeamMembers();
-    }, 600000);
+    }, 5000);
 
     // Also listen for focus events to refresh when user returns to tab
     const handleFocus = () => {

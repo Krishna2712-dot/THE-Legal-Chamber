@@ -24,7 +24,6 @@ export async function GET() {
         summary,
         link,
         image,
-        images,
         mediaType,
         publishedAt,
         featured

@@ -92,7 +92,7 @@ const culturePillars = [
 const applicationSteps = [
   {
     title: "Share Your Interest",
-    detail: "Email your CV, a short cover note, and recent writing sample to office@thelegalchambers.org.",
+    detail: "Email your CV, a short cover note, and recent writing sample to careers@thelegalchambers.org.",
   },
   {
     title: "Screening & Interview",
@@ -340,11 +340,11 @@ export default function CareersPage() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <a
-                  href="mailto:office@thelegalchambers.org"
+                  href="mailto:careers@thelegalchambers.org"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-primary font-semibold hover:bg-white/90 transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  office@thelegalchambers.org
+                  careers@thelegalchambers.org
                 </a>
                 <a
                   href="/contact"
