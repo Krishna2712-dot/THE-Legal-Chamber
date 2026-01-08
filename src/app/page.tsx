@@ -6,20 +6,23 @@ import About from "@/components/About";
 import { Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Home | The Legal Chambers",
-  description: "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas. Advocates | Solicitors | Arbitrators — Advocates of Justice, Architects of Resolution.",
-  keywords: "law firm, legal services, advocates, solicitors, arbitrators, corporate law, litigation, dispute resolution, legal advisory, India",
+  title: "Best Criminal & Corporate Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+  description:
+    "Full-service law firm in Delhi & Ghaziabad delivering integrated, strategic legal solutions across corporate, criminal, and civil matters.",
+  keywords:
+    "best lawyers in Delhi, corporate lawyers Ghaziabad, criminal lawyers Delhi, law firm Delhi, legal services NCR, dispute resolution, corporate law, litigation, legal advisory",
   alternates: {
     canonical: "https://www.thelegalchambers.org/",
   },
   openGraph: {
-    title: "The Legal Chambers | Full-Service Law Firm",
-    description: "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas.",
+    title: "Best Criminal & Corporate Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description:
+      "Full-service law firm in Delhi & Ghaziabad delivering integrated, strategic legal solutions across corporate, criminal, and civil matters.",
     url: "https://www.thelegalchambers.org/",
     siteName: "The Legal Chambers",
     images: [
       {
-        url: "https://www.thelegalchambers.org/og-default.jpg",
+        url: "https://www.thelegalchambers.org/favicon.png",
         width: 1200,
         height: 630,
         alt: "The Legal Chambers",
@@ -30,9 +33,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Legal Chambers | Full-Service Law Firm",
-    description: "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas.",
-    images: ["https://www.thelegalchambers.org/og-default.jpg"],
+    title: "Best Criminal & Corporate Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description:
+      "Full-service law firm in Delhi & Ghaziabad delivering integrated, strategic legal solutions across corporate, criminal, and civil matters.",
+    images: ["https://www.thelegalchambers.org/favicon.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#7B542F",
@@ -48,9 +52,26 @@ export default function Home() {
     "@type": "LegalService",
     "name": "The Legal Chambers",
     "url": "https://www.thelegalchambers.org",
-    "logo": "https://www.thelegalchambers.org/logo.png",
-    "image": "https://www.thelegalchambers.org/og-default.jpg",
-    "areaServed": "India",
+    "logo": "https://www.thelegalchambers.org/favicon.png",
+    "image": "https://www.thelegalchambers.org/favicon.png",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Delhi"
+      },
+      {
+        "@type": "City",
+        "name": "Ghaziabad"
+      },
+      {
+        "@type": "City",
+        "name": "Delhi NCR"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
     "serviceType": [
       "Corporate & Commercial Law",
       "Litigation & Dispute Resolution",
@@ -80,8 +101,74 @@ export default function Home() {
       "telephone": "+91-96627-78086",
       "email": "office@thelegalchambers.org",
       "contactType": "customer service",
-      "areaServed": "IN",
-      "availableLanguage": "English"
+      "areaServed": ["Delhi", "Ghaziabad", "Delhi NCR", "IN"],
+      "availableLanguage": "English",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:30",
+        "closes": "18:30"
+      }
+    }
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.thelegalchambers.org",
+    "name": "The Legal Chambers",
+    "image": "https://www.thelegalchambers.org/favicon.png",
+    "logo": "https://www.thelegalchambers.org/favicon.png",
+    "url": "https://www.thelegalchambers.org",
+    "telephone": "+91-96627-78086",
+    "email": "office@thelegalchambers.org",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "483, Lawyers Chambers, Block-II",
+      "addressLocality": "Delhi High Court, New Delhi",
+      "addressRegion": "Delhi",
+      "postalCode": "11003",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.6095",
+      "longitude": "77.2326"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:30",
+        "closes": "18:30"
+      }
+    ],
+    "priceRange": "$$",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Delhi"
+      },
+      {
+        "@type": "City",
+        "name": "Ghaziabad"
+      },
+      {
+        "@type": "City",
+        "name": "Delhi NCR"
+      }
+    ],
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "28.6095",
+        "longitude": "77.2326"
+      },
+      "geoRadius": {
+        "@type": "Distance",
+        "name": "Delhi NCR"
+      }
     }
   };
 
@@ -90,12 +177,13 @@ export default function Home() {
     "@type": "Organization",
     "name": "The Legal Chambers",
     "url": "https://www.thelegalchambers.org",
-    "logo": "https://www.thelegalchambers.org/logo.png",
-    "description": "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas.",
+    "logo": "https://www.thelegalchambers.org/favicon.png",
+    "description": "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas. Expert lawyers in Delhi & Ghaziabad.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "483, Lawyers Chambers, Block-II",
       "addressLocality": "Delhi High Court, New Delhi",
+      "addressRegion": "Delhi",
       "postalCode": "11003",
       "addressCountry": "IN"
     },
@@ -103,12 +191,23 @@ export default function Home() {
       "@type": "ContactPoint",
       "telephone": "+91-96627-78086",
       "email": "office@thelegalchambers.org",
-      "contactType": "customer service"
+      "contactType": "customer service",
+      "areaServed": ["Delhi", "Ghaziabad", "Delhi NCR", "IN"],
+      "availableLanguage": "English"
     },
-    "sameAs": [
-      "https://www.facebook.com/thelegalchambers",
-      "https://www.twitter.com/thelegalchambers",
-      "https://www.instagram.com/thelegalchambers"
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Delhi"
+      },
+      {
+        "@type": "City",
+        "name": "Ghaziabad"
+      },
+      {
+        "@type": "City",
+        "name": "Delhi NCR"
+      }
     ]
   };
 
@@ -133,6 +232,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       <script
         type="application/ld+json"

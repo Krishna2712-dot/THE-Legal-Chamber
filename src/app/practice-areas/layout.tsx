@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Practice Areas | The Legal Chambers",
-  description: "Integrated legal expertise across industries. From corporate transactions to high-stakes litigation and advisory mandates, The Legal Chambers offers end-to-end representation through multidisciplinary teams.",
-  keywords: "practice areas, legal services, corporate law, litigation, dispute resolution, real estate law, family law, employment law, IPR, taxation, banking law, criminal law, legal expertise",
+  title: "Practice Areas | Legal Services in Delhi & Ghaziabad | The Legal Chambers",
+  description: "Comprehensive legal services in Delhi & Ghaziabad. Corporate law, criminal law, litigation, dispute resolution, real estate, family law, IPR, taxation, and more. Expert lawyers for all practice areas.",
+  keywords: "practice areas Delhi, legal services Ghaziabad, corporate lawyers Delhi, criminal lawyers Delhi, litigation Delhi, dispute resolution Delhi NCR, real estate lawyers Delhi, family law Delhi, IPR lawyers, taxation lawyers Delhi",
   alternates: {
     canonical: "https://www.thelegalchambers.org/practice-areas",
   },
   openGraph: {
-    title: "Practice Areas | The Legal Chambers",
-    description: "Integrated legal expertise across industries. From corporate transactions to high-stakes litigation and advisory mandates.",
+    title: "Practice Areas | Legal Services in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Comprehensive legal services in Delhi & Ghaziabad. Corporate law, criminal law, litigation, dispute resolution, and more.",
     url: "https://www.thelegalchambers.org/practice-areas",
     siteName: "The Legal Chambers",
     images: [
       {
-        url: "https://www.thelegalchambers.org/og-default.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://www.thelegalchambers.org/favicon.png",
+        width: 512,
+        height: 512,
         alt: "Practice Areas - The Legal Chambers",
       },
     ],
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Practice Areas | The Legal Chambers",
-    description: "Integrated legal expertise across industries. From corporate transactions to high-stakes litigation and advisory mandates.",
-    images: ["https://www.thelegalchambers.org/og-default.jpg"],
+    title: "Practice Areas | Legal Services in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Comprehensive legal services in Delhi & Ghaziabad. Corporate law, criminal law, litigation, dispute resolution, and more.",
+    images: ["https://www.thelegalchambers.org/favicon.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#7B542F",
@@ -43,9 +43,26 @@ export default function PracticeAreasLayout({
     "@type": "LegalService",
     "name": "The Legal Chambers",
     "url": "https://www.thelegalchambers.org",
-    "logo": "https://www.thelegalchambers.org/logo.png",
-    "image": "https://www.thelegalchambers.org/og-default.jpg",
-    "areaServed": "India",
+    "logo": "https://www.thelegalchambers.org/favicon.png",
+    "image": "https://www.thelegalchambers.org/favicon.png",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Delhi"
+      },
+      {
+        "@type": "City",
+        "name": "Ghaziabad"
+      },
+      {
+        "@type": "City",
+        "name": "Delhi NCR"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
     "serviceType": [
       "Corporate & Commercial Law",
       "Litigation & Dispute Resolution",
@@ -75,7 +92,7 @@ export default function PracticeAreasLayout({
       "telephone": "+91-96627-78086",
       "email": "office@thelegalchambers.org",
       "contactType": "customer service",
-      "areaServed": "IN",
+      "areaServed": ["Delhi", "Ghaziabad", "Delhi NCR", "IN"],
       "availableLanguage": "English"
     }
   };

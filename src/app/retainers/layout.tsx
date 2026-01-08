@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Retainers | The Legal Chambers",
-  description: "Annual Legal Advisory Plan. Always-on counsel for individuals, families, and enterprises that value preventive legal strategy. Retainership programs starting from ₹2,000 per year.",
-  keywords: "legal retainership, annual legal plan, legal advisory plan, retainer services, legal consultation plan",
+  title: "Careers | Legal Internships & Training in Delhi | The Legal Chambers",
+  description: "Build your legal career with The Legal Chambers in Delhi. Paid & unpaid internships, training programs, and mentorship opportunities for law students and young professionals.",
+  keywords: "legal internships Delhi, law firm careers Ghaziabad, legal training Delhi, law student internships, legal mentorship Delhi NCR, careers in law",
   alternates: {
     canonical: "https://www.thelegalchambers.org/retainers",
   },
   openGraph: {
-    title: "Retainers | The Legal Chambers",
-    description: "Annual Legal Advisory Plan. Always-on counsel for individuals, families, and enterprises that value preventive legal strategy.",
+    title: "Careers | Legal Internships & Training in Delhi | The Legal Chambers",
+    description: "Build your legal career with The Legal Chambers in Delhi. Paid & unpaid internships, training programs, and mentorship opportunities.",
     url: "https://www.thelegalchambers.org/retainers",
     siteName: "The Legal Chambers",
     images: [
       {
-        url: "https://www.thelegalchambers.org/og-default.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Retainers - The Legal Chambers",
+        url: "https://www.thelegalchambers.org/favicon.png",
+        width: 512,
+        height: 512,
+        alt: "Careers - The Legal Chambers",
       },
     ],
     locale: "en_US",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Retainers | The Legal Chambers",
-    description: "Annual Legal Advisory Plan. Always-on counsel for individuals, families, and enterprises that value preventive legal strategy.",
-    images: ["https://www.thelegalchambers.org/og-default.jpg"],
+    title: "Careers | Legal Internships & Training in Delhi | The Legal Chambers",
+    description: "Build your legal career with The Legal Chambers in Delhi. Paid & unpaid internships, training programs, and mentorship opportunities.",
+    images: ["https://www.thelegalchambers.org/favicon.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#7B542F",

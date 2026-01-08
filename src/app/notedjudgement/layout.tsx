@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Noted Judgements | The Legal Chambers",
-  description: "Landmark decisions and precedent-setting matters handled or closely followed by our teams.",
-  keywords: "legal judgements, case law, landmark cases, legal precedents, court decisions, legal cases",
+  title: "Noted Judgements | Landmark Cases from Delhi Courts | The Legal Chambers",
+  description: "Landmark legal judgements and precedent-setting cases handled by The Legal Chambers in Delhi & Ghaziabad. Important court decisions and case law analysis from expert lawyers.",
+  keywords: "legal judgements Delhi, case law Ghaziabad, landmark cases Delhi NCR, legal precedents, court decisions Delhi, legal cases Delhi High Court",
   alternates: {
     canonical: "https://www.thelegalchambers.org/notedjudgement",
   },
   openGraph: {
-    title: "Noted Judgements | The Legal Chambers",
-    description: "Landmark decisions and precedent-setting matters handled or closely followed by our teams.",
+    title: "Noted Judgements | Landmark Cases from Delhi Courts | The Legal Chambers",
+    description: "Landmark legal judgements and precedent-setting cases handled by The Legal Chambers in Delhi & Ghaziabad. Important court decisions and case law analysis.",
     url: "https://www.thelegalchambers.org/notedjudgement",
     siteName: "The Legal Chambers",
     images: [
       {
-        url: "https://www.thelegalchambers.org/og-default.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://www.thelegalchambers.org/favicon.png",
+        width: 512,
+        height: 512,
         alt: "Noted Judgements - The Legal Chambers",
       },
     ],
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Noted Judgements | The Legal Chambers",
-    description: "Landmark decisions and precedent-setting matters handled or closely followed by our teams.",
-    images: ["https://www.thelegalchambers.org/og-default.jpg"],
+    title: "Noted Judgements | Landmark Cases from Delhi Courts | The Legal Chambers",
+    description: "Landmark legal judgements and precedent-setting cases handled by The Legal Chambers in Delhi & Ghaziabad. Important court decisions and case law analysis.",
+    images: ["https://www.thelegalchambers.org/favicon.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#7B542F",

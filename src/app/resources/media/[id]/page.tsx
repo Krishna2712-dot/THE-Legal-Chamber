@@ -65,7 +65,32 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
     if (url) imageUrls.push(url);
   }
 
+  const creativeWorkSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": media.title,
+    "description": media.summary,
+    "datePublished": media.publishedAt,
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Legal Chambers",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.thelegalchambers.org/favicon.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.thelegalchambers.org/resources/media/${id}`
+    }
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
+      />
     <main className="min-h-screen bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Button */}
@@ -81,14 +106,9 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
-<<<<<<< HEAD
-            {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
-            </div>
-            <ShareButton url={`/resources/media/${id}`} title={media.title} />
-=======
               {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
             </div>
->>>>>>> parent of 41ea74a (Revert "Add support for multiple images in media items")
+            <ShareButton url={`/resources/media/${id}`} title={media.title} />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#7B542F] mb-4">{media.title}</h1>
           {media.publishedAt && (
@@ -143,6 +163,7 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
         )}
       </div>
     </main>
+    </>
   );
 }
 

@@ -48,29 +48,6 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h2 className="text-foreground text-lg font-semibold mb-4">Follow Us</h2>
-          <div className="flex space-x-4">
-            <a
-              href="#"
-              className="hover:text-primary transition-colors duration-300"
-            >
-              Facebook
-            </a>
-            <a
-              href="#"
-              className="hover:text-primary transition-colors duration-300"
-            >
-              Twitter
-            </a>
-            <a
-              href="#"
-              className="hover:text-primary transition-colors duration-300"
-            >
-              Instagram
-            </a>
-          </div>
-        </div>
-        <div>
           <h2 className="text-foreground text-lg font-semibold mb-4">Contact Us</h2>
           <p>Head Office: 483, Lawyers Chambers, Block-II, Delhi High Court, Delhi - 11003</p>
           <p>Email: office@thelegalchambers.org</p>

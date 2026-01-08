@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact | The Legal Chambers",
-  description: "Schedule a consultation or meet us at our Delhi High Court office. We serve clients across major Indian metros through our regional desks and on-ground associates.",
-  keywords: "contact The Legal Chambers, legal consultation, law firm contact, legal advice, New Delhi law firm, Delhi High Court",
+  title: "Contact Us | Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+  description: "Contact The Legal Chambers for legal consultation in Delhi & Ghaziabad. Visit our Delhi High Court office or reach us via phone/email. Serving clients across Delhi NCR and major Indian metros.",
+  keywords: "contact lawyers Delhi, contact lawyers Ghaziabad, legal consultation Delhi, law firm contact Delhi NCR, legal advice Delhi, Delhi High Court lawyers, Ghaziabad legal services",
   alternates: {
     canonical: "https://www.thelegalchambers.org/contact",
   },
   openGraph: {
-    title: "Contact | The Legal Chambers",
-    description: "Schedule a consultation or meet us at our Delhi High Court office. We serve clients across major Indian metros.",
+    title: "Contact Us | Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Contact The Legal Chambers for legal consultation in Delhi & Ghaziabad. Visit our Delhi High Court office or reach us via phone/email.",
     url: "https://www.thelegalchambers.org/contact",
     siteName: "The Legal Chambers",
     images: [
       {
-        url: "https://www.thelegalchambers.org/og-default.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://www.thelegalchambers.org/favicon.png",
+        width: 512,
+        height: 512,
         alt: "Contact The Legal Chambers",
       },
     ],
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact | The Legal Chambers",
-    description: "Schedule a consultation or meet us at our Delhi High Court office. We serve clients across major Indian metros.",
-    images: ["https://www.thelegalchambers.org/og-default.jpg"],
+    title: "Contact Us | Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Contact The Legal Chambers for legal consultation in Delhi & Ghaziabad. Visit our Delhi High Court office or reach us via phone/email.",
+    images: ["https://www.thelegalchambers.org/favicon.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#7B542F",

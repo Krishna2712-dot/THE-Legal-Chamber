@@ -8,8 +8,45 @@ import DisclaimerProvider from "@/components/DisclaimerProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "The Legal Chambers",
-  description: "Advocates | Solicitors | Arbitrators — Advocates of Justice, Architects of Resolution",
+  metadataBase: new URL("https://www.thelegalchambers.org"),
+  title: {
+    default: "Best Criminal & Corporate Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    template: "%s | The Legal Chambers",
+  },
+  description: "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas. Expert lawyers in Delhi & Ghaziabad for criminal, corporate, litigation, and dispute resolution.",
+  keywords: "lawyers in Delhi, lawyers in Ghaziabad, criminal lawyers Delhi, corporate lawyers Delhi, best law firm Delhi, legal services Delhi NCR, advocates Delhi High Court",
+  alternates: {
+    canonical: "https://www.thelegalchambers.org/",
+  },
+  openGraph: {
+    title: "Best Criminal & Corporate Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas. Expert lawyers in Delhi & Ghaziabad.",
+    url: "https://www.thelegalchambers.org/",
+    siteName: "The Legal Chambers",
+    images: [
+      {
+        url: "https://www.thelegalchambers.org/favicon.png",
+        width: 512,
+        height: 512,
+        alt: "The Legal Chambers",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Criminal & Corporate Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Full-service law firm delivering integrated, strategic, and high-value legal solutions across practice areas.",
+    images: ["https://www.thelegalchambers.org/favicon.png"],
+  },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  viewport: "width=device-width, initial-scale=1",
+  themeColor: "#7B542F",
 };
 
 export default function RootLayout({

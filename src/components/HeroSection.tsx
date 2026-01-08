@@ -7,33 +7,33 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 const clientTestimonials = [
   {
     quote:
-      'Their guidance transformed a stressful legal process into a clear path forward. I felt supported and well-informed at every step — outstanding representation.',
-    name: 'Aditi Sharma',
-    title: 'Property & Inheritance Client',
+      "Their guidance transformed a stressful legal process into a clear path forward. I felt supported and well-informed at every step — outstanding representation.",
+    name: "Aditi Sharma",
+    title: "Property & Inheritance Client",
   },
   {
     quote:
       "The team’s communication and attention to detail were exceptional. They prepared me thoroughly for every meeting and helped secure a favorable outcome.",
-    name: 'Rohan Malhotra',
-    title: 'Family Law Client',
+    name: "Rohan Malhotra",
+    title: "Family Law Client",
   },
   {
     quote:
       "I gained confidence thanks to their expert advice. They crafted a strong strategy and negotiated on my behalf with professionalism and care.",
-    name: 'Meera Iyer',
-    title: 'Employment Law Client',
+    name: "Meera Iyer",
+    title: "Employment Law Client",
   },
   {
     quote:
-      'They understood the complexities of my case and advocated decisively. Their experience made all the difference in reaching the resolution I needed.',
-    name: 'Vikram Desai',
-    title: 'Civil Litigation Client',
+      "They understood the complexities of my case and advocated decisively. Their experience made all the difference in reaching the resolution I needed.",
+    name: "Vikram Desai",
+    title: "Civil Litigation Client",
   },
   {
     quote:
-      'Their legal team protected my business interests and handled negotiations skillfully. I highly recommend them for commercial and contract matters.',
-    name: 'Kavya Bhandari',
-    title: 'Corporate Client',
+      "Their legal team protected my business interests and handled negotiations skillfully. I highly recommend them for commercial and contract matters.",
+    name: "Kavya Bhandari",
+    title: "Corporate Client",
   },
 ];
 

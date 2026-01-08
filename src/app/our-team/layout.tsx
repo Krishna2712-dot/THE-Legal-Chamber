@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Team | The Legal Chambers",
-  description: "Meet the professionals behind The Legal Chambers. Our multidisciplinary team brings together decades of combined experience across litigation, arbitration, and advisory practices.",
-  keywords: "legal team, lawyers, advocates, partners, associates, legal professionals, law firm team, legal experts",
+  title: "Our Team | Expert Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+  description: "Meet the expert lawyers and legal professionals at The Legal Chambers in Delhi & Ghaziabad. Multidisciplinary team with decades of combined experience across litigation, arbitration, and advisory practices.",
+  keywords: "legal team Delhi, lawyers Ghaziabad, advocates Delhi, partners Delhi NCR, associates Delhi, legal professionals, law firm team Delhi, legal experts Ghaziabad",
   alternates: {
     canonical: "https://www.thelegalchambers.org/our-team",
   },
   openGraph: {
-    title: "Our Team | The Legal Chambers",
-    description: "Meet the professionals behind The Legal Chambers. Our multidisciplinary team brings together decades of combined experience.",
+    title: "Our Team | Expert Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Meet the expert lawyers and legal professionals at The Legal Chambers in Delhi & Ghaziabad. Multidisciplinary team with decades of combined experience.",
     url: "https://www.thelegalchambers.org/our-team",
     siteName: "The Legal Chambers",
     images: [
       {
-        url: "https://www.thelegalchambers.org/og-default.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://www.thelegalchambers.org/favicon.png",
+        width: 512,
+        height: 512,
         alt: "Our Team - The Legal Chambers",
       },
     ],
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Team | The Legal Chambers",
-    description: "Meet the professionals behind The Legal Chambers. Our multidisciplinary team brings together decades of combined experience.",
-    images: ["https://www.thelegalchambers.org/og-default.jpg"],
+    title: "Our Team | Expert Lawyers in Delhi & Ghaziabad | The Legal Chambers",
+    description: "Meet the expert lawyers and legal professionals at The Legal Chambers in Delhi & Ghaziabad. Multidisciplinary team with decades of combined experience.",
+    images: ["https://www.thelegalchambers.org/favicon.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#7B542F",

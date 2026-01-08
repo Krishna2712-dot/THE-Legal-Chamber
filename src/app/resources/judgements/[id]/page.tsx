@@ -67,7 +67,34 @@ export default async function JudgementDetailPage({ params, searchParams }: Judg
     notFound();
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": judgement.title,
+    "description": judgement.summary,
+    "datePublished": judgement.judgementDate,
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Legal Chambers",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.thelegalchambers.org/favicon.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.thelegalchambers.org/resources/judgements/${id}`
+    },
+    "articleSection": "Legal Judgement",
+    "keywords": "legal judgement Delhi, case law Ghaziabad, court decisions Delhi NCR"
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
     <main className="min-h-screen bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Button */}
@@ -146,6 +173,7 @@ export default async function JudgementDetailPage({ params, searchParams }: Judg
         )}
       </div>
     </main>
+    </>
   );
 }
 

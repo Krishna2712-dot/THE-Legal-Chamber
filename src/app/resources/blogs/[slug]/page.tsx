@@ -118,7 +118,40 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
 
   const imageUrl = blog.featuredImage ? urlFor(blog.featuredImage).width(1200).height(600).url() : null;
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": blog.title,
+    "description": blog.summary,
+    "image": imageUrl ? imageUrl : "https://www.thelegalchambers.org/favicon.png",
+    "datePublished": blog.publishedAt,
+    "dateModified": blog.publishedAt,
+    "author": {
+      "@type": "Person",
+      "name": blog.author || "The Legal Chambers"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Legal Chambers",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.thelegalchambers.org/favicon.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.thelegalchambers.org/resources/blogs/${slug}`
+    },
+    "articleSection": "Legal",
+    "keywords": "legal blog Delhi, law firm blog Ghaziabad, legal insights Delhi NCR"
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
     <main className="min-h-screen bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Button */}
@@ -194,6 +227,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
         )}
       </div>
     </main>
+    </>
   );
 }
 
