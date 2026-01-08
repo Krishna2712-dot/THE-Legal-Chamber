@@ -20,11 +20,26 @@ export default defineType({
     }),
     defineField({
       name: "image",
-      title: "Image",
+      title: "Image (Deprecated - Use Images below)",
       type: "image",
       options: {
         hotspot: true,
       },
+      description: "Single image field. For multiple images, use the 'Images' field below.",
+    }),
+    defineField({
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+      description: "Add multiple images for this media item.",
     }),
     defineField({
       name: "link",

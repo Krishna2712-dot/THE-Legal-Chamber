@@ -26,6 +26,7 @@ async function getMediaItem(id: string) {
         summary,
         link,
         image,
+        images,
         mediaType,
         publishedAt,
         featured
@@ -49,7 +50,20 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
     notFound();
   }
 
-  const imageUrl = media.image ? urlFor(media.image).width(1200).height(600).url() : null;
+  // Support both images array and single image field for backward compatibility
+  const imageUrls: string[] = [];
+  if (media.images && Array.isArray(media.images) && media.images.length > 0) {
+    media.images.forEach((img: any) => {
+      if (img) {
+        const url = urlFor(img).width(1200).height(600).url();
+        if (url) imageUrls.push(url);
+      }
+    });
+  } else if (media.image) {
+    // Fallback to single image field for backward compatibility
+    const url = urlFor(media.image).width(1200).height(600).url();
+    if (url) imageUrls.push(url);
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -67,9 +81,14 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="inline-block px-3 py-1 rounded-full bg-[#EFE9E3] text-[#7B542F] text-sm font-semibold">
+<<<<<<< HEAD
             {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
             </div>
             <ShareButton url={`/resources/media/${id}`} title={media.title} />
+=======
+              {media.mediaType ? media.mediaType.charAt(0).toUpperCase() + media.mediaType.slice(1) : "Media"}
+            </div>
+>>>>>>> parent of 41ea74a (Revert "Add support for multiple images in media items")
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#7B542F] mb-4">{media.title}</h1>
           {media.publishedAt && (
@@ -86,14 +105,18 @@ export default async function MediaDetailPage({ params, searchParams }: MediaPag
           )}
         </div>
 
-        {/* Image */}
-        {imageUrl && (
-          <div className="mb-8 rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src={imageUrl}
-              alt={media.title}
-              className="w-full h-auto object-cover"
-            />
+        {/* Images */}
+        {imageUrls.length > 0 && (
+          <div className="mb-8 space-y-6">
+            {imageUrls.map((imageUrl, index) => (
+              <div key={index} className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src={imageUrl}
+                  alt={`${media.title} - Image ${index + 1}`}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            ))}
           </div>
         )}
 

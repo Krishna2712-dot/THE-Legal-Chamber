@@ -296,11 +296,6 @@ export default function PracticeAreasPage() {
                           <span className="leading-relaxed">{item}</span>
                         </li>
                       ))}
-                      {area.items.length > 5 && (
-                        <li className="text-xs text-[#7B542F] font-medium pt-1">
-                          +{area.items.length - 5} more services
-                        </li>
-                      )}
                     </ul>
                   </div>
                 </motion.article>

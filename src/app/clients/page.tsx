@@ -146,6 +146,7 @@ export default function ClientsPage() {
               At The Legal Chambers, we believe that everyone should have access to Justice and reliable legal guidance without fear of commercials. To facilitate this, we offer an Annual Legal Advisory Plan that allows individuals and families to retain our services for ongoing legal support throughout the year.
             </p>
             <div className="space-y-4 text-sm text-[#3C2A21]/80">
+<<<<<<< HEAD
               <p>
                 For an annual fee of <span className="font-semibold text-[#7B542F]">₹2,000</span>, individual clients who retain us under this plan are entitled to:
               </p>
@@ -153,6 +154,8 @@ export default function ClientsPage() {
                 <li>Up to 10 legal consultations per year (in person or virtual)</li>
                 <li>One complimentary legal notice drafting and sending</li>
               </ul>
+=======
+>>>>>>> parent of 41ea74a (Revert "Add support for multiple images in media items")
               <p className="pt-2">
                 This retainership arrangement enables clients to seek timely and preventive legal advice in matters such as property, tenancy, consumer issues, employment, family law, and personal documentation. Our objective is to help clients make informed legal decisions and manage their matters efficiently.
               </p>
