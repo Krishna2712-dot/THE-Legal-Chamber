@@ -54,6 +54,7 @@ export default function OurTeamPage() {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [flippedCards, setFlippedCards] = useState<Set<string>>(new Set());
   const prefersReducedMotion = useReducedMotion();
 
   // Fetch team members from Sanity
@@ -150,15 +151,28 @@ export default function OurTeamPage() {
       </section>
 
       {/* Category Quick Navigation - Moved to top */}
-      <section className="py-4">
+      <section className="py-4 sticky top-16 md:top-20 z-30 bg-background/95 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-[#C9B59C]/50 bg-[#F9F8F6] px-6 py-4 shadow-sm">
-            <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="rounded-3xl border border-[#C9B59C]/50 bg-[#F9F8F6] px-4 md:px-6 py-3 md:py-4 shadow-sm">
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
               {CATEGORY_CONFIG.map((category) => (
                 <a
                   key={category.value}
                   href={`#${category.value}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#C9B59C]/60 bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm transition hover:bg-[#EFE9E3]"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#C9B59C]/60 bg-white px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-semibold text-primary shadow-sm transition hover:bg-[#EFE9E3] active:bg-[#EFE9E3]"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.getElementById(category.value);
+                    if (element) {
+                      const offset = window.innerWidth < 768 ? 140 : 100; // Account for sticky nav + mobile spacing
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - offset;
+                      window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                      });
+                    }
+                  }}
                 >
                   {category.title}
                 </a>
@@ -169,7 +183,7 @@ export default function OurTeamPage() {
       </section>
 
       <section className="pt-4 pb-16 md:pb-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 md:space-y-8">
           {loading ? (
             <div className="text-center py-20">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#7B542F] mb-4"></div>
@@ -192,18 +206,18 @@ export default function OurTeamPage() {
                 id={group.value}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.1 }}
                 variants={sectionVariants}
-                className="space-y-8"
+                className="space-y-6 md:space-y-8 scroll-mt-32 md:scroll-mt-40"
               >
-                <header className="space-y-3 text-center md:text-left scroll-mt-32">
+                <header className="space-y-3 text-center md:text-left">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <h2 className="text-3xl font-bold text-primary">{group.title}</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-primary">{group.title}</h2>
                     <span className="text-sm uppercase tracking-[0.3em] text-[#3C2A21]/60">
                       {group.members.length} {group.members.length === 1 ? "Member" : "Members"}
                     </span>
                   </div>
-                  <p className="text-[#3C2A21]/75 text-base max-w-3xl">{group.description}</p>
+                  <p className="text-[#3C2A21]/75 text-sm md:text-base max-w-3xl">{group.description}</p>
                 </header>
 
                 {group.members.length === 0 ? (
@@ -212,16 +226,39 @@ export default function OurTeamPage() {
                   </div>
                 ) : (
                   <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                    {group.members.map((member) => (
+                    {group.members.map((member) => {
+                      const isFlipped = flippedCards.has(member._id);
+                      const handleCardClick = () => {
+                        setFlippedCards((prev) => {
+                          const newSet = new Set(prev);
+                          if (newSet.has(member._id)) {
+                            newSet.delete(member._id);
+                          } else {
+                            newSet.add(member._id);
+                          }
+                          return newSet;
+                        });
+                      };
+                      
+                      return (
                       <article
                         key={member._id}
                         tabIndex={0}
                         aria-label={`${member.name}, ${member.title}`}
-                        className="group relative h-full rounded-3xl border border-[#C9B59C]/40 bg-[#FDFBF7] p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        className="group relative h-full rounded-3xl border border-[#C9B59C]/40 bg-[#FDFBF7] p-6 shadow-sm transition md:hover:-translate-y-1 md:hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                       >
                         <div className="perspective-1000 h-full">
                           <div
-                            className="relative h-full min-h-[420px] transition-[transform] duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)]"
+                            onClick={(e) => {
+                              // Handle click on touch devices (mobile)
+                              e.stopPropagation();
+                              handleCardClick();
+                            }}
+                            onTouchStart={(e) => {
+                              // Prevent hover on touch devices
+                              e.stopPropagation();
+                            }}
+                            className={`relative h-full min-h-[420px] transition-[transform] duration-500 [transform-style:preserve-3d] cursor-pointer md:cursor-default md:group-hover:[transform:rotateY(180deg)] md:group-focus-within:[transform:rotateY(180deg)] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}
                           >
                             {/* Front */}
                             <div className="absolute inset-0 backface-hidden rounded-3xl bg-[#F9F8F6] p-6 flex flex-col items-center text-center">
@@ -262,20 +299,33 @@ export default function OurTeamPage() {
                                 )}
                               </div>
                               <p className="mt-auto text-xs text-[#3C2A21]/60">
-                                Hover or focus to view profile
+                                <span className="md:hidden">Tap to view details</span>
+                                <span className="hidden md:inline">Hover or focus to view profile</span>
                               </p>
                             </div>
 
                             {/* Back */}
                             <div
-                              className="absolute inset-0 backface-hidden rounded-3xl bg-[#3C2A21] p-6 text-white overflow-hidden [transform:rotateY(180deg)]"
+                              className="absolute inset-0 backface-hidden rounded-3xl bg-[#3C2A21] p-6 text-white overflow-hidden [transform:rotateY(180deg)] cursor-pointer md:cursor-default"
                               tabIndex={0}
                               aria-label={`Details for ${member.name}`}
+                              onClick={(e) => {
+                                // Allow clicks on links/buttons to work
+                                const target = e.target as HTMLElement;
+                                if (target.tagName === 'A' || target.closest('a') || target.closest('button')) {
+                                  return;
+                                }
+                                e.stopPropagation();
+                                handleCardClick();
+                              }}
                             >
                               <div className="flex flex-col h-full gap-4">
-                                <div>
-                                  <h3 className="text-2xl font-semibold">{member.name}</h3>
-                                  <p className="text-sm text-white/70 mt-1">{member.title}</p>
+                                <div className="flex items-start justify-between">
+                                  <div>
+                                    <h3 className="text-2xl font-semibold">{member.name}</h3>
+                                    <p className="text-sm text-white/70 mt-1">{member.title}</p>
+                                  </div>
+                                  <p className="text-xs text-white/50 md:hidden">Tap to flip back</p>
                                 </div>
                                 <div className="flex-1 flex flex-col min-h-0">
                                   <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-2">
@@ -323,7 +373,8 @@ export default function OurTeamPage() {
                           </div>
                         </div>
                       </article>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </motion.section>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Our Team | Expert Lawyers in Delhi & Ghaziabad | The Legal Chambers",
@@ -29,7 +29,11 @@ export const metadata: Metadata = {
     description: "Meet the expert lawyers and legal professionals at The Legal Chambers in Delhi & Ghaziabad. Multidisciplinary team with decades of combined experience.",
     images: ["https://www.thelegalchambers.org/favicon.png"],
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#7B542F",
 };
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Noted Judgements | Landmark Cases from Delhi Courts | The Legal Chambers",
@@ -29,7 +29,11 @@ export const metadata: Metadata = {
     description: "Landmark legal judgements and precedent-setting cases handled by The Legal Chambers in Delhi & Ghaziabad. Important court decisions and case law analysis.",
     images: ["https://www.thelegalchambers.org/favicon.png"],
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#7B542F",
 };
 

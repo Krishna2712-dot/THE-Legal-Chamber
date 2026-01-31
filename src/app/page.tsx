@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import UpcomingWebinars from "@/components/UpcomingWebinars";
@@ -38,7 +38,11 @@ export const metadata: Metadata = {
       "Full-service law firm in Delhi & Ghaziabad delivering integrated, strategic legal solutions across corporate, criminal, and civil matters.",
     images: ["https://www.thelegalchambers.org/favicon.png"],
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#7B542F",
 };
 

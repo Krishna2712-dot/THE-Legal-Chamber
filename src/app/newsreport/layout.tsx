@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Legal News & Reports | Delhi & Ghaziabad Law Firm Updates | The Legal Chambers",
@@ -29,7 +29,11 @@ export const metadata: Metadata = {
     description: "Stay updated with legal news, regulatory developments, and media coverage from The Legal Chambers in Delhi & Ghaziabad.",
     images: ["https://www.thelegalchambers.org/favicon.png"],
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#7B542F",
 };
 

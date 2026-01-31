@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { client, isSanityConfigured } from "@/sanity/lib/client";
 
 async function getMediaMetadata(id: string) {
@@ -71,10 +71,14 @@ export async function generateMetadata({
       description,
       images: ["https://www.thelegalchambers.org/favicon.png"],
     },
-    viewport: "width=device-width, initial-scale=1",
-    themeColor: "#7B542F",
   };
 }
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#7B542F",
+};
 
 export default function MediaLayout({
   children,
