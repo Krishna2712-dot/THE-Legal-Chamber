@@ -4,14 +4,10 @@ import Link from "next/link";
 import { Mail, Phone, MessageSquare, MapPin, ArrowRight } from "lucide-react";
 
 const regionalOffices = [
-  "Delhi NCR",
   "Srinagar",
   "Mumbai",
   "Kolkata",
   "Hyderabad",
-  "Gujarat",
-  "Assam",
-  "Karnataka",
 ];
 
 const contactCards = [
@@ -87,8 +83,15 @@ export default function ContactPage() {
                 </h2>
               </div>
               <div className="space-y-0.5 text-xs text-[#3C2A21]/70 mb-4">
-                <p>483, Lawyers Chambers, Block-II</p>
-                <p>Delhi High Court, New Delhi - 11003</p>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=483+Lawyers+Chambers+Block-II+Delhi+High+Court+New+Delhi+110003"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#7B542F] hover:underline transition-colors cursor-pointer"
+                >
+                  <p>483, Lawyers Chambers, Block-II</p>
+                  <p>Delhi High Court, New Delhi - 11003</p>
+                </a>
               </div>
               <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 mb-3">
                 {contactCards.map((card, idx) => {
@@ -149,16 +152,49 @@ export default function ContactPage() {
                 <p className="font-semibold text-[#7B542F] text-base mb-2">Regional Offices</p>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#7B542F] font-semibold min-w-[70px] flex-shrink-0">Gujarat:</span>
-                    <span className="leading-relaxed">408 Moneyplant Business Hub, Silver Oak University Road, S G Highway, Gota, Ahmedabad, Gujarat - 382481</span>
+                    <span className="text-[#7B542F] font-semibold min-w-[80px] flex-shrink-0">Delhi:</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=Chamber+478-479+Western+Wing+Tis+Hazari+Courts+Delhi+110054"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="leading-relaxed hover:text-[#7B542F] hover:underline transition-colors"
+                    >Chamber 478-479, Western Wing, Tis Hazari Courts, Delhi – 110054</a>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#7B542F] font-semibold min-w-[70px] flex-shrink-0">Assam:</span>
-                    <span className="leading-relaxed">H. No 13, Chandmari Milanpur, Near Shiv Mandir, Guwahati, Assam - 781021</span>
+                    <span className="text-[#7B542F] font-semibold min-w-[80px] flex-shrink-0">Gujarat:</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=408+Moneyplant+Business+Hub+Silver+Oak+University+Road+SG+Highway+Gota+Ahmedabad+Gujarat+382481"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="leading-relaxed hover:text-[#7B542F] hover:underline transition-colors"
+                    >408 Moneyplant Business Hub, Silver Oak University Road, S G Highway, Gota, Ahmedabad, Gujarat - 382481</a>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#7B542F] font-semibold min-w-[70px] flex-shrink-0">Karnataka:</span>
-                    <span className="leading-relaxed">11/2 Second Floor, Ranganatha Market, J.M. Road, Avenue Road Cross, Behind Indian Bank, Bangalore, Karnataka - 560002</span>
+                    <span className="text-[#7B542F] font-semibold min-w-[80px] flex-shrink-0">Assam:</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=H+No+13+Chandmari+Milanpur+Near+Shiv+Mandir+Guwahati+Assam+781021"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="leading-relaxed hover:text-[#7B542F] hover:underline transition-colors"
+                    >H. No 13, Chandmari Milanpur, Near Shiv Mandir, Guwahati, Assam - 781021</a>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#7B542F] font-semibold min-w-[80px] flex-shrink-0">Karnataka:</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=11/2+Second+Floor+Ranganatha+Market+JM+Road+Avenue+Road+Cross+Behind+Indian+Bank+Bangalore+Karnataka+560002"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="leading-relaxed hover:text-[#7B542F] hover:underline transition-colors"
+                    >11/2 Second Floor, Ranganatha Market, J.M. Road, Avenue Road Cross, Behind Indian Bank, Bangalore, Karnataka - 560002</a>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#7B542F] font-semibold min-w-[80px] flex-shrink-0">Andhra Pradesh:</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=Chamber+30-15-133+2nd+Floor+Das+Arcade+Opp+Post+Office+Main+Road+Dabagardens+Visakhapatnam+530020"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="leading-relaxed hover:text-[#7B542F] hover:underline transition-colors"
+                    >Chamber 30-15-133, 2nd Floor, Das Arcade, Opp Post Office Main Road, Dabagardens, Visakhapatnam – 530020</a>
                   </li>
                 </ul>
               </div>

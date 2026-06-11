@@ -46,6 +46,10 @@ function Navbar({ className }: { className?: string }) {
                 </Link>
 
                 
+                <Link href="https://client-frontend-hq7sk2vxs-thelegalchambersoffice-hubs-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <MenuItem setActive={setActive} active={active} item="Notary" />
+                </Link>
+
                 <Link href={"/contact"}>
                 <MenuItem setActive={setActive} active={active} item="Contact Us">
                 </MenuItem>

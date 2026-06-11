@@ -26,7 +26,8 @@ export async function GET() {
         court,
         caseNumber,
         judgementDate,
-        featured
+        featured,
+        "attachmentUrl": attachment.asset->url
       }`,
       {},
       {

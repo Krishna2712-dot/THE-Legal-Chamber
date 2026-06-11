@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Newspaper, Camera, PenTool, ArrowRight } from "lucide-react";
+import { BookOpen, Newspaper, Camera, PenTool, ArrowRight, X, ExternalLink } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 
 const resourceTabs = [
@@ -55,6 +55,8 @@ export default function ResourcesPage() {
   const [entries, setEntries] = useState<ResourceEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // News summary modal state
+  const [newsModalEntry, setNewsModalEntry] = useState<ResourceEntry | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,7 +71,7 @@ export default function ResourcesPage() {
           },
         });
         const data = await response.json();
-        
+
         if (!response.ok) {
           // Check if it's a configuration error
           if (response.status === 503 && data?.error) {
@@ -116,8 +118,89 @@ export default function ResourcesPage() {
     };
   }, [activeTab.id, activeTab.label]);
 
+  // Close modal on Escape key
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setNewsModalEntry(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
+      {/* News Summary Modal */}
+      <AnimatePresence>
+        {newsModalEntry && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
+              onClick={() => setNewsModalEntry(null)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 30 }}
+              transition={{ type: "spring", duration: 0.4 }}
+              className="fixed inset-0 flex items-center justify-center z-[60] p-4 pointer-events-none"
+            >
+              <div className="pointer-events-auto w-full max-w-lg bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl overflow-hidden">
+                <div className="bg-gradient-to-br from-[#EFE9E3] to-[#F9F8F6] p-6 border-b border-[#C9B59C]/40">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-2">
+                      <Newspaper className="w-5 h-5 text-[#7B542F] flex-shrink-0" />
+                      <span className="text-xs font-semibold uppercase tracking-widest text-[#7B542F]">News Report</span>
+                    </div>
+                    <button
+                      onClick={() => setNewsModalEntry(null)}
+                      className="flex-shrink-0 p-1.5 rounded-full bg-[#C9B59C]/20 hover:bg-[#C9B59C]/40 transition-colors"
+                      aria-label="Close"
+                    >
+                      <X className="w-4 h-4 text-[#7B542F]" />
+                    </button>
+                  </div>
+                  <h2 className="text-xl font-bold text-[#7B542F] mt-3 leading-snug">{newsModalEntry.title}</h2>
+                  {newsModalEntry.publishedAt && (
+                    <p className="text-xs text-[#3C2A21]/60 mt-1">
+                      {new Date(newsModalEntry.publishedAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </p>
+                  )}
+                </div>
+                <div className="p-6">
+                  <p className="text-sm leading-relaxed text-[#3C2A21]/80 mb-6">{newsModalEntry.summary}</p>
+                  <div className="flex flex-col sm:flex-row items-center gap-3">
+                    {newsModalEntry.link && (
+                      <a
+                        href={newsModalEntry.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#7B542F] text-white text-sm font-semibold hover:bg-[#5f4125] transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Visit Original Source
+                      </a>
+                    )}
+                    <button
+                      onClick={() => setNewsModalEntry(null)}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-[#C9B59C]/60 text-[#7B542F] text-sm font-semibold hover:bg-[#EFE9E3] transition-colors"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#EFE9E3] to-background py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,7 +214,7 @@ export default function ResourcesPage() {
               Resources
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-[#7B542F] mb-6">
-              Insights, Updates & Thought Leadership
+              Insights, Updates &amp; Thought Leadership
             </h1>
             <p className="text-lg text-[#3C2A21]/80 leading-relaxed">
               Stay informed with curated legal updates, case notes, and multimedia explainers created by The Legal Chambers.
@@ -205,7 +288,7 @@ export default function ResourcesPage() {
                   <p className="text-[#3C2A21]/70">No {activeTab.label.toLowerCase()} available yet.</p>
                 </div>
               ) : (
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {entries.map((entry, idx) => {
                     // Determine the detail page link based on content type
                     let entryLink = "#";
@@ -239,15 +322,15 @@ export default function ResourcesPage() {
                         console.error("Error generating image URL:", e);
                       }
                     }
-                    
+
                     return (
-                  <motion.article
+                      <motion.article
                         key={entry._id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1, duration: 0.4 }}
-                    className="group flex h-full flex-col rounded-xl bg-background p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-2 hover:ring-[#7B542F]/20"
-                  >
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.1, duration: 0.4 }}
+                        className="group flex h-full flex-col rounded-xl bg-background p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-2 hover:ring-[#7B542F]/20"
+                      >
                         {displayImageUrl && (
                           <div className="mb-4 rounded-lg overflow-hidden">
                             <img
@@ -257,8 +340,8 @@ export default function ResourcesPage() {
                             />
                           </div>
                         )}
-                    <div className="flex-1 flex flex-col min-h-0">
-                      <h3 className="text-lg font-semibold text-[#7B542F] mb-3">{entry.title}</h3>
+                        <div className="flex-1 flex flex-col min-h-0">
+                          <h3 className="text-lg font-semibold text-[#7B542F] mb-3">{entry.title}</h3>
                           <div className="flex-1 overflow-hidden">
                             <p className="text-sm leading-relaxed text-[#3C2A21]/70 mb-2 max-h-20 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-[#C9B59C]/40 scrollbar-track-transparent">{entry.summary}</p>
                           </div>
@@ -284,22 +367,31 @@ export default function ResourcesPage() {
                               </p>
                             )}
                           </div>
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-[#C9B59C]/20">
-                      <Link
-                            href={entryLink}
-                            target={activeTab.id === "news" && entry.link ? "_blank" : "_self"}
-                            rel={activeTab.id === "news" && entry.link ? "noopener noreferrer" : undefined}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-[#7B542F] hover:text-[#3C2A21] transition-colors group-hover:gap-3"
-                      >
-                            {activeTab.id === "news" && entry.link ? "Read more" : "View details"}
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </motion.article>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-[#C9B59C]/20">
+                          {activeTab.id === "news" ? (
+                            // News: open summary modal first, then user can visit source
+                            <button
+                              onClick={() => setNewsModalEntry(entry)}
+                              className="inline-flex items-center gap-2 text-sm font-semibold text-[#7B542F] hover:text-[#3C2A21] transition-colors group-hover:gap-3"
+                            >
+                              Read More
+                              <ArrowRight className="w-4 h-4" />
+                            </button>
+                          ) : (
+                            <Link
+                              href={entryLink}
+                              className="inline-flex items-center gap-2 text-sm font-semibold text-[#7B542F] hover:text-[#3C2A21] transition-colors group-hover:gap-3"
+                            >
+                              View details
+                              <ArrowRight className="w-4 h-4" />
+                            </Link>
+                          )}
+                        </div>
+                      </motion.article>
                     );
                   })}
-              </div>
+                </div>
               )}
             </motion.section>
           </AnimatePresence>

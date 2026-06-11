@@ -28,7 +28,9 @@ async function getJudgement(id: string) {
         court,
         caseNumber,
         judgementDate,
-        featured
+        featured,
+        "attachmentUrl": attachment.asset->url,
+        "attachmentFilename": attachment.asset->originalFilename
       }`,
       { id }
     );
@@ -155,6 +157,25 @@ export default async function JudgementDetailPage({ params, searchParams }: Judg
             <div className="prose prose-lg max-w-none">
               <PortableText value={judgement.content} components={portableTextComponents} />
             </div>
+          </div>
+        )}
+
+        {/* Attachment Download */}
+        {judgement.attachmentUrl && (
+          <div className="mt-8 p-6 rounded-xl bg-[#EFE9E3] border border-[#C9B59C]/40">
+            <h2 className="text-xl font-semibold text-[#7B542F] mb-3">Judgement Document</h2>
+            <a
+              href={judgement.attachmentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download={judgement.attachmentFilename || true}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#7B542F] text-white text-sm font-semibold hover:bg-[#5f4125] transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Judgement Document
+            </a>
           </div>
         )}
 
