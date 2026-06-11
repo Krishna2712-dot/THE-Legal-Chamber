@@ -34,6 +34,15 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "attachment",
+      title: "Attachment (PDF / Document)",
+      type: "file",
+      description: "Upload the full judgement document (PDF or Word file).",
+      options: {
+        accept: ".pdf,.doc,.docx",
+      },
+    }),
+    defineField({
       name: "court",
       title: "Court",
       type: "string",

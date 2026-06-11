@@ -8,7 +8,7 @@ const images = [
   "/media/03-Expertise_1_0.jpg",
   "/media/gavel-scales-justice-law-books_23-2151998158.jpg",
   "/media/justice-is-the-antidote-to-chaos-scaled.jpg",
-  "/media/Screenshot 2026-06-11 163307.png",
+  "/media/about-legal-chambers.png",
 ];
 
 const highlights = [

@@ -137,7 +137,7 @@ export default function ResourcesPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
               onClick={() => setNewsModalEntry(null)}
             />
             <motion.div
@@ -147,24 +147,24 @@ export default function ResourcesPage() {
               transition={{ type: "spring", duration: 0.4 }}
               className="fixed inset-0 flex items-center justify-center z-[60] p-4 pointer-events-none"
             >
-              <div className="pointer-events-auto w-full max-w-lg bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl overflow-hidden">
-                <div className="bg-gradient-to-br from-[#EFE9E3] to-[#F9F8F6] p-6 border-b border-[#C9B59C]/40">
+              <div className="pointer-events-auto w-full max-w-lg bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl overflow-hidden border border-[#C9B59C]/20 dark:border-neutral-800">
+                <div className="bg-gradient-to-br from-[#EFE9E3] to-[#F9F8F6] dark:from-neutral-800 dark:to-neutral-900/60 p-6 border-b border-[#C9B59C]/40 dark:border-neutral-800">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-2">
-                      <Newspaper className="w-5 h-5 text-[#7B542F] flex-shrink-0" />
-                      <span className="text-xs font-semibold uppercase tracking-widest text-[#7B542F]">News Report</span>
+                      <Newspaper className="w-5 h-5 text-[#7B542F] dark:text-[#C9B59C] flex-shrink-0" />
+                      <span className="text-xs font-semibold uppercase tracking-widest text-[#7B542F] dark:text-[#C9B59C]">News Report</span>
                     </div>
                     <button
                       onClick={() => setNewsModalEntry(null)}
-                      className="flex-shrink-0 p-1.5 rounded-full bg-[#C9B59C]/20 hover:bg-[#C9B59C]/40 transition-colors"
+                      className="flex-shrink-0 p-1.5 rounded-full bg-[#C9B59C]/20 hover:bg-[#C9B59C]/40 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-[#7B542F] dark:text-neutral-300 transition-colors"
                       aria-label="Close"
                     >
-                      <X className="w-4 h-4 text-[#7B542F]" />
+                      <X className="w-4 h-4" />
                     </button>
                   </div>
-                  <h2 className="text-xl font-bold text-[#7B542F] mt-3 leading-snug">{newsModalEntry.title}</h2>
+                  <h2 className="text-xl font-bold text-[#7B542F] dark:text-neutral-100 mt-3 leading-snug">{newsModalEntry.title}</h2>
                   {newsModalEntry.publishedAt && (
-                    <p className="text-xs text-[#3C2A21]/60 mt-1">
+                    <p className="text-xs text-[#3C2A21]/60 dark:text-neutral-400 mt-1">
                       {new Date(newsModalEntry.publishedAt).toLocaleDateString("en-US", {
                         year: "numeric",
                         month: "long",
@@ -173,23 +173,23 @@ export default function ResourcesPage() {
                     </p>
                   )}
                 </div>
-                <div className="p-6">
-                  <p className="text-sm leading-relaxed text-[#3C2A21]/80 mb-6">{newsModalEntry.summary}</p>
+                <div className="p-6 bg-white dark:bg-neutral-900">
+                  <p className="text-sm leading-relaxed text-[#3C2A21]/80 dark:text-neutral-300 mb-6 whitespace-pre-wrap max-h-[40vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-[#C9B59C]/40 scrollbar-track-transparent">{newsModalEntry.summary}</p>
                   <div className="flex flex-col sm:flex-row items-center gap-3">
                     {newsModalEntry.link && (
                       <a
                         href={newsModalEntry.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#7B542F] text-white text-sm font-semibold hover:bg-[#5f4125] transition-colors"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#7B542F] dark:bg-[#C9B59C] text-white dark:text-neutral-950 text-sm font-semibold hover:bg-[#5f4125] dark:hover:bg-[#b09e86] transition-colors"
                       >
                         <ExternalLink className="w-4 h-4" />
-                        Visit Original Source
+                        Open in Full Page
                       </a>
                     )}
                     <button
                       onClick={() => setNewsModalEntry(null)}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-[#C9B59C]/60 text-[#7B542F] text-sm font-semibold hover:bg-[#EFE9E3] transition-colors"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-[#C9B59C]/60 dark:border-neutral-700 text-[#7B542F] dark:text-neutral-300 text-sm font-semibold hover:bg-[#EFE9E3] dark:hover:bg-neutral-800 transition-colors"
                     >
                       Close
                     </button>
@@ -368,20 +368,33 @@ export default function ResourcesPage() {
                             )}
                           </div>
                         </div>
-                        <div className="mt-4 pt-4 border-t border-[#C9B59C]/20">
+                        <div className="mt-4 pt-4 border-t border-[#C9B59C]/20 flex items-center justify-between gap-4 w-full">
                           {activeTab.id === "news" ? (
                             // News: open summary modal first, then user can visit source
-                            <button
-                              onClick={() => setNewsModalEntry(entry)}
-                              className="inline-flex items-center gap-2 text-sm font-semibold text-[#7B542F] hover:text-[#3C2A21] transition-colors group-hover:gap-3"
-                            >
-                              Read More
-                              <ArrowRight className="w-4 h-4" />
-                            </button>
+                            <>
+                              <button
+                                onClick={() => setNewsModalEntry(entry)}
+                                className="inline-flex items-center gap-2 text-sm font-semibold text-[#7B542F] hover:text-[#3C2A21] dark:text-[#C9B59C] dark:hover:text-white transition-colors group-hover:gap-3"
+                              >
+                                Read More
+                                <ArrowRight className="w-4 h-4" />
+                              </button>
+                              {entry.link && (
+                                <a
+                                  href={entry.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7B542F] hover:text-[#3C2A21] dark:text-[#C9B59C] dark:hover:text-white transition-colors"
+                                >
+                                  Open in Full Page
+                                  <ExternalLink className="w-3.5 h-3.5" />
+                                </a>
+                              )}
+                            </>
                           ) : (
                             <Link
                               href={entryLink}
-                              className="inline-flex items-center gap-2 text-sm font-semibold text-[#7B542F] hover:text-[#3C2A21] transition-colors group-hover:gap-3"
+                              className="inline-flex items-center gap-2 text-sm font-semibold text-[#7B542F] hover:text-[#3C2A21] dark:text-[#C9B59C] dark:hover:text-white transition-colors group-hover:gap-3"
                             >
                               View details
                               <ArrowRight className="w-4 h-4" />

@@ -39,6 +39,21 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#7B542F] mb-6">
               About The Legal Chambers
             </h1>
+
+            {/* About Image with premium styling */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="my-8 max-w-3xl mx-auto overflow-hidden rounded-2xl shadow-xl border border-[#C9B59C]/30 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm p-1.5"
+            >
+              <img
+                src="/media/about-legal-chambers.png"
+                alt="About The Legal Chambers"
+                className="w-full h-auto rounded-xl object-cover hover:scale-[1.01] transition-transform duration-500"
+              />
+            </motion.div>
+
             <p className="text-lg md:text-xl text-[#3C2A21]/80 max-w-3xl mx-auto leading-relaxed">
               Delivering comprehensive, strategic legal solutions with precision, integrity, and unwavering commitment to excellence.
             </p>
